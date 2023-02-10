@@ -6,6 +6,6 @@ import (
 )
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
-	page, _ := template.ParseFiles("../Source/Templates/" + "home" + ".html")
+	page, _ := template.ParseFiles("../source/Templates/" + "home" + ".html")
 	page.ExecuteTemplate(w, "home.html", nil)
 }
