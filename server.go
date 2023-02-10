@@ -1,4 +1,4 @@
-package groupie_tracker
+package main
 
 import (
 	"fmt"
