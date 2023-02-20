@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="./static/css/home.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <h1>MENU</h1>
-    {{range .}}
-    <img src="{{.Image}}">
-    {{end}}</body>
+    <section class="sectionTitle">
+        <div class="center divTitle">
+            <h1 class="title">MENU</h1>
+        </div>
+    </section>
+    <div class="center divImage">
+        {{range .}}
+        <img src="{{.Image}}">
+        {{end}}
+    </div>
+</body>
 </html>
