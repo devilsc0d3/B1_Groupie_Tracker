@@ -11,14 +11,13 @@
             <h1 class="title">MENU</h1>
         </div>
     </section>
+
     <section class="sectionImage">
         {{range .}}
-        <div class="divImage">
-            <a href="{{.ID}}">
+            <div class="divImage">
                 <img src="{{.Image}}">
                 <h1>{{.Name}}</h1>
-            </a>
-        </div>
+            </div>
         {{end}}
     </section>
 </body>
