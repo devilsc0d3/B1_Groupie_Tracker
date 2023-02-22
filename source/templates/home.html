@@ -14,8 +14,10 @@
     <section class="sectionImage">
         {{range .}}
         <div class="divImage">
-        <img src="{{.Image}}">
-        <h1>{{.Name}}</h1>
+            <a href="{{.ID}}">
+                <img src="{{.Image}}">
+                <h1>{{.Name}}</h1>
+            </a>
         </div>
         {{end}}
     </section>

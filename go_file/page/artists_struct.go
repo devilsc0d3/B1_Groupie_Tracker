@@ -45,7 +45,6 @@ func GetApi(url string, target interface{}) {
 func Variable() {
 	GetApi("https://groupietrackers.herokuapp.com/api", &moi)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &moi2)
-
 	for i := 0; i < len(moi2); i++ {
 		artist := moi2[i]
 		http.HandleFunc("/"+strconv.FormatInt(moi2[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
