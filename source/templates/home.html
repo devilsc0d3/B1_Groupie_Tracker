@@ -11,10 +11,13 @@
             <h1 class="title">MENU</h1>
         </div>
     </section>
-    <div class="center divImage">
+    <section class="sectionImage">
         {{range .}}
+        <div class="divImage">
         <img src="{{.Image}}">
+        <h1>{{.Name}}</h1>
+        </div>
         {{end}}
-    </div>
+    </section>
 </body>
 </html>
