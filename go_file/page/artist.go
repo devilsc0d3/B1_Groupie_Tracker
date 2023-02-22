@@ -5,9 +5,9 @@ import (
 	"net/http"
 )
 
-func ArtistPage(w http.ResponseWriter, r *http.Request) {
+func ArtistPage(w http.ResponseWriter, r *http.Request, data Artists) {
 	page, _ := template.ParseFiles("./source/templates/" + "artist" + ".html")
-	err := page.ExecuteTemplate(w, "artist.html", nil)
+	err := page.ExecuteTemplate(w, "artist.html", data)
 	if err != nil {
 		return
 	}

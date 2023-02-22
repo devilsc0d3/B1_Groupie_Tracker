@@ -12,7 +12,6 @@ func main() {
 	page.Variable()
 
 	http.HandleFunc("/home", page.HomePage)
-	http.HandleFunc("/artist", page.ArtistPage)
 
 	fmt.Println("http://localhost" + port + "/home")
 
