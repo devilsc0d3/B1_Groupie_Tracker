@@ -30,12 +30,13 @@
 
 body{
     margin: 0;
+    background-color: #303030;
 }
 
 .sectionImage{
     align-content: center;
     display: flex;
-    width: 1500px;
+    width: 1515px;
     height: 3300px;
     align-items: center;
     min-height: calc(50vh - 60px);
@@ -50,4 +51,12 @@ body{
     text-align: center;
     width: 250px;
     height: 325px;
+}
+
+a{
+    text-decoration : none;
+}
+
+h1{
+    color: white;
 }

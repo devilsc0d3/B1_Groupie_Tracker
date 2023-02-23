@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./static/css/home.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -13,10 +12,12 @@
     </section>
     <section class="sectionImage">
         {{range .}}
-        <div class="divImage">
-        <img src="{{.Image}}">
-        <h1>{{.Name}}</h1>
-        </div>
+        <a href="{{.ID}}">
+            <div class="divImage">
+                <img src="{{.Image}}">
+                <h1>{{.Name}}</h1>
+            </div>
+        </a>
         {{end}}
     </section>
 </body>
