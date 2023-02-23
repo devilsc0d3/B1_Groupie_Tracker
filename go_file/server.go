@@ -14,7 +14,6 @@ func main() {
 	page.Variable()
 
 	http.HandleFunc("/home", page.HomePage)
-	http.HandleFunc("/artist", page.ArtistPage)
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	fmt.Println("http://localhost" + port + "/home")
