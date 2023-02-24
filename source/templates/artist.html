@@ -6,9 +6,17 @@
     <title>Artist</title>
 </head>
 <body>
-<img src="{{.Image}}">
-<p>{{.Name}}</p>
-<p>{{.Members}}</p>
-<p>{{.CreationDate}}</p>
+<section class="sectionOut">
+    <section class="sectionIn">
+        <div class="divImage">
+            <img src="{{.Image}}">
+        </div>
+        <div class="divText">
+            <p class="name">{{.Name}}</p>
+            <p>{{.Members}}</p>
+            <p>~ {{.CreationDate}} ~</p>
+        </div>
+    </section>
+</section>
 </body>
 </html>
