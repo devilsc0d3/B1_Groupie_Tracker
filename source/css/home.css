@@ -46,11 +46,14 @@ body{
 
 }
 
+img {
+    border-radius: 100%;
+}
+
 .divImage{
     text-align: center;
     width: 250px;
     height: 325px;
-    background-color: black;
 }
 
 h1 {

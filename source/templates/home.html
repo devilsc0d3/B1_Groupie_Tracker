@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./static/css/home.css">
+    <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/logo.ico">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+    <form>
+        <input type="text" name="search" list="programmingLanguages">
+        <datalist id="programmingLanguages">
+            {{range .Data}}
+            <option value="{{.Name}}">{{.Name}} - group</option>
+            {{end}}
+        </datalist>
+    </form>
     <section class="sectionTitle">
         <div class="center divTitle">
             <h1 class="title">MENU</h1>
@@ -13,7 +23,7 @@
     </section>
 
     <section class="sectionImage">
-        {{range .}}
+        {{range .Show}}
         <a href="{{.ID}}">
 
             <div class="divImage">
