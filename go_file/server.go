@@ -10,11 +10,11 @@ const port = ":8080"
 
 func main() {
 	fs := http.FileServer(http.Dir("source/"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	page.Variable()
 
 	http.HandleFunc("/home", page.HomePage)
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	fmt.Println("http://localhost" + port + "/home")
 
