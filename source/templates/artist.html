@@ -12,11 +12,18 @@
             <img src="{{.Image}}">
         </div>
         <div class="divText">
-            <p class="name">{{.Name}}</p>
-            <p>{{.Members}}</p>
-            <p>~ {{.CreationDate}} ~</p>
+            <h1>{{.Name}}</h1>
         </div>
     </section>
+</section>
+<section>
+    <p>
+        {{range $i, $member := .Members}}
+        {{- if ne $i 0 -}}, {{end}}
+        {{- $member -}}
+        {{end}}
+    </p>
+    <p>~ {{.CreationDate}} ~</p>
 </section>
 </body>
 </html>
