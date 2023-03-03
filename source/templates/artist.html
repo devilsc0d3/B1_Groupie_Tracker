@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./static/css/artist.css">
+    <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/musique.png">
     <meta charset="UTF-8">
     <title>Artist</title>
 </head>
@@ -24,6 +25,18 @@
         {{end}}
     </p>
     <p>~ {{.CreationDate}} ~</p>
+    <p>
+        {{range $i, $locations := .Locations.Locations}}
+        {{- if ne $i 0 -}}, {{end}}
+        {{- $locations -}}
+        {{end}}
+    </p>
+    <p>
+        {{range $i, $dates := .ConcertDates.Dates}}
+        {{- if ne $i 0 -}}, {{end}}
+        {{- $dates -}}
+        {{end}}
+    </p>
 </section>
 </body>
 </html>

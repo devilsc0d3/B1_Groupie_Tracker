@@ -14,9 +14,9 @@ type Artists struct {
 	Members      []string `json:"members"`
 	CreationDate int64    `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
-	Locations    string   `json:"locations"`
-	ConcertDates string   `json:"concertDates"`
-	Relations    string   `json:"relations"`
+	Locations    Locations
+	ConcertDates Dates
+	Relations    string `json:"relations"`
 }
 
 type Base struct {
@@ -25,19 +25,18 @@ type Base struct {
 }
 
 type Locations struct {
-	ID        int64  `json:"id"`
-	Locations string `json:"locations"`
+	ID        int64    `json:"id"`
+	Locations []string `json:"locations"`
+	Dates     string   `json:"dates"`
 }
 
-type Welcome struct {
-	Artists   []Base
-	Locations string `json:"locations"`
-	Dates     string `json:"dates"`
-	Relation  string `json:"relation"`
+type Dates struct {
+	ID    int64    `json:"id"`
+	Dates []string `json:"dates"`
 }
 
 var bdd Base
-var welcome Welcome
+var dates Dates
 
 func GetApi(url string, target interface{}) {
 	response, err := http.Get(url)
@@ -55,8 +54,10 @@ func GetApi(url string, target interface{}) {
 func Variable() {
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
-	GetApi("https://groupietrackers.herokuapp.com/api", &welcome)
-
+	for i := 0; i < len(bdd.Data); i++ {
+		GetApi("https://groupietrackers.herokuapp.com/api/locations/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Locations)
+		GetApi("https://groupietrackers.herokuapp.com/api/dates/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].ConcertDates)
+	}
 	for i := 0; i < len(bdd.Data); i++ {
 		artist := bdd.Data[i]
 		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
