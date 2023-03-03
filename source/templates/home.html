@@ -2,37 +2,37 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./static/css/home.css">
-    <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/logo.ico">
+    <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/musique.png">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>MM+</title>
 </head>
 <body>
 
+    <section class="sectionTitle">
+        <div class="center divTitle">
+            <h1 class="title">MusicMinder+</h1>
+        </div>
+    </section>
+
     <form>
-        <input type="text" name="search" list="programmingLanguages">
+        <input type="text" name="search" placeholder="Choose a group" list="programmingLanguages">
         <datalist id="programmingLanguages">
             {{range .Data}}
             <option value="{{.Name}}">{{.Name}} - group</option>
             {{end}}
         </datalist>
     </form>
-    <section class="sectionTitle">
-        <div class="center divTitle">
-            <h1 class="title">MENU</h1>
-        </div>
-    </section>
 
     <section class="sectionImage">
         {{range .Show}}
         <a href="{{.ID}}">
-
             <div class="divImage">
-                <img src="{{.Image}}">
+                <img src="{{.Image}}" alt="Image group">
                 <h1>{{.Name}}</h1>
             </div>
         </a>
-
         {{end}}
     </section>
+
 </body>
 </html>
