@@ -24,15 +24,20 @@ type Base struct {
 	Show []Artists
 }
 
+type Locations struct {
+	ID        int64  `json:"id"`
+	Locations string `json:"locations"`
+}
+
 type Welcome struct {
-	Artists   string `json:"artists"`
+	Artists   []Base
 	Locations string `json:"locations"`
 	Dates     string `json:"dates"`
 	Relation  string `json:"relation"`
 }
 
-var moi2 []Artists
-var bbd Base
+var bdd Base
+var welcome Welcome
 
 func GetApi(url string, target interface{}) {
 	response, err := http.Get(url)
@@ -48,12 +53,13 @@ func GetApi(url string, target interface{}) {
 }
 
 func Variable() {
-	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bbd.Data)
-	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bbd.Show)
-	//GetApi("https://groupietrackers.herokuapp.com/api/artists", &moi2)
-	for i := 0; i < len(bbd.Data); i++ {
-		artist := bbd.Data[i]
-		http.HandleFunc("/"+strconv.FormatInt(bbd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
+	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
+	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
+	GetApi("https://groupietrackers.herokuapp.com/api", &welcome)
+
+	for i := 0; i < len(bdd.Data); i++ {
+		artist := bdd.Data[i]
+		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
 			ArtistPage(w, r, artist)
 		})
 	}
