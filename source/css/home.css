@@ -7,7 +7,7 @@
 }
 
 .title{
-    margin-top: 255px;
+    margin-top: 36vh;
     color: white;
     font-size: 150px;
     font-family: Disney;
@@ -22,7 +22,7 @@
     display: inline-block;
     background-image: url("../image/concert-test-fete-musique.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     margin-bottom: 15px;
 }
 
