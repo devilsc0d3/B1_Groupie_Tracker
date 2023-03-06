@@ -64,4 +64,5 @@ func Variable() {
 			ArtistPage(w, r, artist)
 		})
 	}
+	http.HandleFunc("/research", SearchPage)
 }

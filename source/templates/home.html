@@ -16,15 +16,9 @@
 
         <img class="barrette" src="./static/image/gradient.png">
 
-    <form>
-        <input type="text" name="search" placeholder="Choose a group" list="programmingLanguages">
-        <datalist id="programmingLanguages">
-            {{range .Data}}
-            <option value="{{.Name}}">{{.Name}} - group</option>
-            {{end}}
-        </datalist>
-    </form>
-
+    <a href="/research">
+        <img src="./static/image/research.png">
+    </a>
     <section class="sectionImage">
         {{range .Show}}
         <a href="{{.ID}}">
