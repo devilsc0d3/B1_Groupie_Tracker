@@ -14,6 +14,8 @@
         </div>
     </section>
 
+        <img class="barrette" src="./static/image/gradient.png">
+
     <form>
         <input type="text" name="search" placeholder="Choose a group" list="programmingLanguages">
         <datalist id="programmingLanguages">
@@ -27,7 +29,7 @@
         {{range .Show}}
         <a href="{{.ID}}">
             <div class="divImage">
-                <img src="{{.Image}}" alt="Image group">
+                <img src="{{.Image}}" class="image" alt="Image group">
                 <h1>{{.Name}}</h1>
             </div>
         </a>
