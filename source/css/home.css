@@ -24,6 +24,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 15px;
+    z-index: 1;
 }
 
 .divTitle{
@@ -31,11 +32,12 @@
     height: 100vh;
     display: inline-block;
     background-color: rgba(36, 36, 84, 0.8);
+    z-index: 1;
 }
 
 body{
     margin: 0;
-    background-color: rgb(28, 28, 66);
+    background-color: rgb(29, 29, 56);
 
 }
 
@@ -53,6 +55,16 @@ body{
     height: 325px;
 }
 
+.barrette{
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    top: -2px;
+    margin-top: 71vh;
+}
+
 a{
     text-decoration : none;
 }
@@ -61,7 +73,7 @@ h1{
     color: white;
 }
 
-img{
+.image{
     width: 100%;
     height: 60%;
     border-radius : 20px;
@@ -75,7 +87,7 @@ img{
             inset 0 0 32px #2e6bc7;
 }
 
-img:hover {
+.image:hover {
     border: solid #ffff;
     transform: scale(1.1);
     box-shadow: inset 0px 0px 500px rgba(255, 0, 0, 0.9);
