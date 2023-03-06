@@ -69,6 +69,16 @@ a{
 
 h1{
     color: white;
+    font-family: "Comic Sans MS", Serif;
+    font-size: 27px;
+    font-weight: 60;
+}
+
+.h1Search{
+    font-family: "Segoe UI";
+    font-size: 25px;
+    font-weight: 50;
+    margin: 0;
 }
 
 .image{
@@ -91,6 +101,18 @@ h1{
     box-shadow: inset 0px 0px 500px rgba(255, 0, 0, 0.9);
 
 }
+
+.glass{
+    width: 40px;
+    height: 40px;
+}
+
+.divSearch{
+    justify-content: flex-start;
+    display: flex;
+    height: 40px;
+}
+
 
 @font-face {
     font-family: 'Disney';
