@@ -4,12 +4,66 @@ body{
 
 }
 
+header{
+    background-color: #001126;
+    margin: 0;
+    justify-content: space-between;
+    display: flex;
+    position: sticky;
+}
+
+.imgHome{
+    width: 28.5px;
+    height: 28.5px;
+    margin-top: 3.5px;
+}
+
+.divHome{
+    justify-content: flex-start;
+    display: flex;
+    height: 30px;
+    margin-top: 7px;
+}
+
+.h1Home{
+    margin-left: 5px;
+    margin-top: 3px;
+    font-family: "Segoe UI";
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.h1Right{
+    margin-top: 0;
+    margin-right: 5px;
+    margin-bottom: 0;
+}
+
+input{
+    width: 99.03vw;
+    height: 12.5vh;
+    border: none;
+    background-color: #9b9b9b;
+    background-image: linear-gradient(to bottom, #484848, transparent);
+    position: sticky;
+    font-size: 30px;
+    color: white;
+    text-indent: 100px;
+}
+
+::placeholder{
+    color: white;
+    font-size: 30px;
+    text-indent: 100px;
+}
+
 a{
     text-decoration : none;
 }
 
 h1{
     color: white;
+    font-family: "Comic Sans MS";
 }
 
 .sectionImage{
@@ -29,11 +83,54 @@ h1{
 .image{
     width: 100%;
     height: 60%;
-    border-radius : 75px;
+    border-radius : 20px;
     transition: all 0.2s ease-out;
+    box-shadow:
+            0 0 8px #fff,
+            inset 0 0 8px #fff,
+            0 0 16px #2e6bc7,
+            inset 0 0 16px #2e6bc7,
+            0 0 32px #2e6bc7,
+            inset 0 0 32px #2e6bc7;
 }
 
 .image:hover {
     border: solid #ffff;
     transform: scale(1.1);
+}
+
+footer {
+    background-color: #001126;
+    text-align: center;
+}
+
+.title{
+    color: white;
+    font-size: 20px;
+    font-family: Disney, serif;
+    letter-spacing : 2.5px;
+    font-weight: 550;
+}
+
+p {
+    margin: 0;
+    color: #ffff;
+}
+
+@font-face {
+    font-family: 'Disney';
+    src: url("../font/waltograph42.otf") format("truetype");
+}
+
+::-webkit-scrollbar{
+    width: 11px;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffff;
 }
