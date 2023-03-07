@@ -14,9 +14,10 @@ func main() {
 
 	page.Variable()
 
-	http.HandleFunc("/home", page.HomePage)
+	http.HandleFunc("/", page.HomePage)
+	http.HandleFunc("/404", page.Error)
 
-	fmt.Println("http://localhost" + port + "/home")
+	fmt.Println("http://localhost" + port + "/")
 
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {

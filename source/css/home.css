@@ -7,7 +7,7 @@
     margin-top: 36vh;
     color: white;
     font-size: 150px;
-    font-family: Disney;
+    font-family: Disney, serif;
     letter-spacing : 5px;
     font-weight: 550;
     position: center;
@@ -68,7 +68,10 @@ a{
 }
 
 h1{
+    font-family: Rond, serif;
     color: white;
+    font-size: 30px;
+    font-weight: 200;
 }
 
 .image{
@@ -88,7 +91,7 @@ h1{
 .image:hover {
     border: solid #ffff;
     transform: scale(1.1);
-    box-shadow: inset 0px 0px 500px rgba(255, 0, 0, 0.9);
+    box-shadow: inset 0 0 500px rgba(255, 0, 0, 0.9);
 
 }
 
@@ -97,10 +100,14 @@ h1{
     src: url("../font/waltograph42.otf") format("truetype");
 }
 
+@font-face {
+    font-family: 'Rond';
+    src: url("../font/Rondouillard.otf") format("truetype");
+}
+
 
 ::-webkit-scrollbar{
     width: 11px;
-    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -109,6 +116,10 @@ h1{
 
 ::-webkit-scrollbar-thumb {
     background: #ffff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #14a0a6;
 }
 
 footer {
