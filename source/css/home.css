@@ -1,3 +1,4 @@
+
 .center{
     text-align: center;
 }
@@ -6,7 +7,7 @@
     margin-top: 36vh;
     color: white;
     font-size: 150px;
-    font-family: Disney, serif;
+    font-family: Disney;
     letter-spacing : 5px;
     font-weight: 550;
     position: center;
@@ -50,6 +51,7 @@ body{
     width: 250px;
     height: 325px;
 }
+
 
 .barrette{
     z-index: 2;
@@ -110,6 +112,9 @@ h1{
     justify-content: flex-start;
     display: flex;
     height: 40px;
+    position: absolute;
+    right: 0;
+    margin: 20px 60px 0 0;
 }
 
 
@@ -130,10 +135,6 @@ h1{
 
 ::-webkit-scrollbar-thumb {
     background: #ffff;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #14a0a6;
 }
 
 footer {
