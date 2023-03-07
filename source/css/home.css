@@ -52,6 +52,7 @@ body{
     height: 325px;
 }
 
+
 .barrette{
     z-index: 2;
     position: absolute;
@@ -111,6 +112,9 @@ h1{
     justify-content: flex-start;
     display: flex;
     height: 40px;
+    position: absolute;
+    right: 0;
+    margin: 20px 60px 0 0;
 }
 
 
