@@ -13,3 +13,7 @@ func Error(w http.ResponseWriter, r *http.Request) {
 	}
 	//TODO : 404 different
 }
+
+func RandomInt() int {
+	return 5
+}
