@@ -6,7 +6,7 @@
     margin-top: 36vh;
     color: white;
     font-size: 150px;
-    font-family: Disney;
+    font-family: Disney, serif;
     letter-spacing : 5px;
     font-weight: 550;
     position: center;
@@ -35,7 +35,6 @@ body{
     margin: 0;
     padding: 0;
     background-color: rgb(29, 29, 56);
-
 }
 
 .sectionImage{
@@ -98,7 +97,7 @@ h1{
 .image:hover {
     border: solid #ffff;
     transform: scale(1.1);
-    box-shadow: inset 0px 0px 500px rgba(255, 0, 0, 0.9);
+    box-shadow: inset 0 0 500px rgba(255, 0, 0, 0.9);
 
 }
 
@@ -131,6 +130,10 @@ h1{
 
 ::-webkit-scrollbar-thumb {
     background: #ffff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #14a0a6;
 }
 
 footer {
