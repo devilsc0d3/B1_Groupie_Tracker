@@ -12,15 +12,17 @@ main {
 }
 
 input{
-    width: 100%;
+    width: 99.03vw;
     height: 12.5vh;
     border: none;
-    background-color: #576872;
-    background-image: linear-gradient(to bottom, #454552, transparent);
+    background-color: #9b9b9b;
+    background-image: linear-gradient(to bottom, #484848, transparent);
+    margin-top: 7.67vh;
     position: fixed;
     font-size: 30px;
     color: white;
     text-indent: 100px;
+    z-index: 999;
 }
 
 ::placeholder{
@@ -43,6 +45,7 @@ a{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top: 25vh;
 }
 
 .divImage{

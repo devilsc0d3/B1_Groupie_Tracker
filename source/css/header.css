@@ -1,9 +1,13 @@
 header{
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #001126;
     margin: 0;
     justify-content: space-between;
     display: flex;
-    position: sticky;
+    position: fixed;
+    z-index: 999;
 }
 
 .title {
@@ -35,6 +39,32 @@ header{
     font-family: "Segoe UI", serif;
     font-weight: 400;
     font-size: 25px;
+}
+
+.underlineEffect {
+    text-decoration: none;
+    position: relative;
+}
+
+.underlineEffect::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: left;
+    transform: scaleX(0);
+    margin-top: 0;
+    margin-left: 5vh;
+    z-index: 999;
+}
+
+.underlineEffect:hover::before {
+    width: 75%;
+    transform: scaleX(1);
 }
 
 .h1Right{
