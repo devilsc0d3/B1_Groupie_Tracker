@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./static/css/404.css">
-    <meta charset="UTF-8">
-    <title>404</title>
-</head>
-<body>
-    <div class="center">
-        <img src="./static/image/{{index .SetImg .Nbr}}">
-        <h1>404 ERROR</h1>
-        <h2>The page you were looking for cannot be found.</h2>
-        <p>Please go to the Disney+ home page by clicking the button below </p>
+    <head>
+        <link rel="stylesheet" href="http://localhost:8080/static/css/404.css">
+        <meta charset="UTF-8">
+        <title>404</title>
+    </head>
+    <body>
+        <div class="center">
+            <img src="http://localhost:8080/static/image/{{index .SetImg .Nbr}}" alt="disney pictures">
+            <h1>404 ERROR</h1>
+            <h2>The page you were looking for cannot be found.</h2>
+            <p>Please go to the Disney+ home page by clicking the button below </p>
 
-        <a href="/">
-            MUSIC-MINDER+ HOME
-        </a>
-    </div>
-</body>
+            <a href="/">
+                MUSIC-MINDER+ HOME
+            </a>
+        </div>
+    </body>
 </html>
