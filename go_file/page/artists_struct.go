@@ -20,8 +20,10 @@ type Artists struct {
 }
 
 type Base struct {
-	Data []Artists
-	Show []Artists
+	Nbr    int
+	Data   []Artists
+	Show   []Artists
+	SetImg []string
 }
 
 type Locations struct {
@@ -58,6 +60,8 @@ func Variable() {
 		GetApi("https://groupietrackers.herokuapp.com/api/locations/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Locations)
 		GetApi("https://groupietrackers.herokuapp.com/api/dates/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].ConcertDates)
 	}
+	bdd.SetImg = append(bdd.SetImg, "ursula.png")
+	bdd.SetImg = append(bdd.SetImg, "bob.webp")
 	for i := 0; i < len(bdd.Data); i++ {
 		artist := bdd.Data[i]
 		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {

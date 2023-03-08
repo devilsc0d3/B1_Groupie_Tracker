@@ -40,9 +40,9 @@
     }
 
     img {
-        margin: 50px 0 0 0;
+        margin-top: 50px;
         text-align: center;
-        width: 800px;
+        width: 500px;
     }
 
     @font-face {
@@ -52,7 +52,7 @@
 </style>
 <body>
     <div class="center">
-        <img src="./static/image/ursula.png">
+        <img src="./static/image/{{index .SetImg .Nbr}}">
         <h1>404 ERROR</h1>
         <h2>The page you were looking for cannot be found.</h2>
         <p>Please go to the Disney+ home page by clicking the button below </p>
