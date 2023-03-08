@@ -60,8 +60,9 @@ func Variable() {
 		GetApi("https://groupietrackers.herokuapp.com/api/locations/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Locations)
 		GetApi("https://groupietrackers.herokuapp.com/api/dates/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].ConcertDates)
 	}
-	bdd.SetImg = append(bdd.SetImg, "ursula.png")
-	bdd.SetImg = append(bdd.SetImg, "bob.webp")
+	bdd.SetImg = []string{"ursula.png", "bob.webp", "err_404_8.webp"}
+	//bdd.SetImg = append(bdd.SetImg, "ursula.png")
+	//bdd.SetImg = append(bdd.SetImg, "bob.webp")
 	for i := 0; i < len(bdd.Data); i++ {
 		artist := bdd.Data[i]
 		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
