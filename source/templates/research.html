@@ -25,7 +25,10 @@
     <input type="text" name="search" placeholder="Choose a group" list="programmingLanguages">
     <datalist id="programmingLanguages">
         {{range .Data}}
-        <option value="{{.Name}}">{{.Name}} - group</option>
+            <option value="{{.Name}}">{{.Name}} - group</option>
+            {{range .Members}}
+                <option value="{{.}}">{{.}} - members</option>
+            {{end}}
         {{end}}
     </datalist>
 </form>
