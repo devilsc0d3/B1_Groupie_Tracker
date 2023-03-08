@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./static/css/home.css">
+    <link rel="stylesheet" href="./static/css/footer.css">
     <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
     <meta charset="UTF-8">
     <title>MM+</title>
@@ -28,7 +29,7 @@
         <a href="{{.ID}}">
             <div class="divImage">
                 <img src="{{.Image}}" class="image" alt="Image group">
-                <h1>{{.Name}}</h1>
+                <h1 class="h1Name">{{.Name}}</h1>
             </div>
         </a>
         {{end}}
@@ -36,7 +37,8 @@
 
 <footer>
     <h1 class="title_footer"> MusicMinder+ </h1>
-    <p>Cenac Lucille - Fauré Léo</p>
+    <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="repo">Repository Gitea</a>
+    <p class="credit">Cenac Lucille - Fauré Léo</p>
 </footer>
 
 </body>
