@@ -1,0 +1,23 @@
+footer {
+    background-color: #001126;
+    text-align: center;
+}
+
+.credit {
+    margin: 0;
+    color: #ffff;
+    text-decoration: none;
+}
+
+.title_footer {
+    color: white;
+    font-size: 20px;
+    font-family: Disney, serif;
+    letter-spacing : 2.5px;
+    font-weight: 550;
+}
+
+@font-face {
+    font-family: 'Disney';
+    src: url("http://localhost:8080/static/font/waltograph42.otf") format("truetype");
+}
