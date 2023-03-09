@@ -2,7 +2,9 @@ header{
     top: 0;
     left: 0;
     width: 100%;
+    height: 80px;
     background-color: #001126;
+    align-items: center;
     margin: 0;
     justify-content: space-between;
     display: flex;
@@ -14,6 +16,7 @@ header{
     color: white;
     font-size: 20px;
     font-family: Disney, serif;
+    margin-left: 20px;
     letter-spacing : 2.5px;
     font-weight: 550;
 }
@@ -24,18 +27,39 @@ header{
     margin-top: 3.5px;
 }
 
+.imgGlass{
+    width: 28.5px;
+    height: 28.5px;
+    margin-top: 3.5px;
+}
+
 .divHome{
     justify-content: flex-start;
     display: flex;
-    height: 30px;
-    margin-top: 7px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    margin: 3px 0px 0 5px;
+    font-family: "Segoe UI", serif;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+h1 {
+    color: white;
+    text-decoration: none;
+    margin: 3px 20px 0 5px;
+    font-family: "Segoe UI", serif;
+    font-weight: 400;
+    font-size: 25px;
 }
 
 .h1Home{
     color: white;
     text-decoration: none;
-    margin-left: 5px;
-    margin-top: 3px;
+    margin: 3px 20px 0 5px;
     font-family: "Segoe UI", serif;
     font-weight: 400;
     font-size: 25px;
@@ -58,7 +82,7 @@ header{
     transform-origin: left;
     transform: scaleX(0);
     margin-top: 0;
-    margin-left: 5vh;
+    margin-left: 36px;
     z-index: 999;
 }
 
@@ -67,12 +91,6 @@ header{
     transform: scaleX(1);
 }
 
-.h1Right{
-    color: white;
-    margin-top: 0;
-    margin-right: 5px;
-    margin-bottom: 0;
-}
 
 @font-face {
     font-family: 'Disney';

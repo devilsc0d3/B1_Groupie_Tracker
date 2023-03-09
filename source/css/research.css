@@ -8,7 +8,7 @@ body{
 main {
     height: auto;
     flex-grow: 1;
-    min-height: 83vh
+    min-height: 100vh
 }
 
 input{
@@ -37,7 +37,7 @@ a{
 
 .h1Name{
     color: white;
-    font-family: "Comic Sans MS";
+    font-family: "Comic Sans MS", serif;
 }
 
 .sectionImage{
