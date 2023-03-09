@@ -28,6 +28,20 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 						bdd.Show = append(bdd.Show, bdd.Data[i])
 					}
 				}
+
+				//locations
+				for j := 0; j < len(bdd.Data[i].Locations.Locations); j++ {
+					if bdd.Data[i].Locations.Locations[j] == r.FormValue("search") {
+						bdd.Show = append(bdd.Show, bdd.Data[i])
+					}
+				}
+
+				//dates
+				for j := 0; j < len(bdd.Data[i].ConcertDates.Dates); j++ {
+					if bdd.Data[i].ConcertDates.Dates[j] == r.FormValue("search") {
+						bdd.Show = append(bdd.Show, bdd.Data[i])
+					}
+				}
 			}
 		}
 	}

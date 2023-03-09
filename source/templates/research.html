@@ -30,6 +30,12 @@
             {{range .Members}}
                 <option value="{{.}}">{{.}} - members</option>
             {{end}}
+            {{range .Locations.Locations}}
+                <option value="{{.}}">{{.}} - locations</option>
+            {{end}}
+            {{range .ConcertDates.Dates}}
+                <option value="{{.}}">{{.}} - dates</option>
+            {{end}}
         {{end}}
     </datalist>
 </form>
