@@ -1,6 +1,7 @@
 body{
     margin: 0;
     position: relative;
+    background-color: rgb(29, 29, 56);
 }
 
 h1{
@@ -53,4 +54,25 @@ img{
 .divText{
     height: 100px;
     margin-top: 8px;
+}
+
+.proposition {
+    font-size: 35px;
+    font-weight: 100;
+    margin-left: 60px;
+    margin-top: 30px;
+    border-bottom: 2px solid rgba(255, 255, 255, 25%);
+}
+
+.proposition:hover{
+    text-decoration-color: white;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+}
+
+p {
+    color: white;
+    font-size: 17px;
+    margin-left: 60px;
+    font-family: "Comic Sans MS";
 }

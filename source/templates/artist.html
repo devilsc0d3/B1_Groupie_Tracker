@@ -28,22 +28,24 @@
         </div>
         <div class="divText">
             <h1>{{.Name}}</h1>
+            <p>~ {{.CreationDate}} ~</p>
         </div>
     </section>
 </section>
 <section>
+    <h1 class="proposition">Members :</h1>
     <p>
         {{range $i, $member := .Members}}
         {{- if ne $i 0 -}}, {{end}}
         {{- $member -}}
         {{end}}
     </p>
-    <p>~ {{.CreationDate}} ~</p>
+    <h1 class="proposition">Concert :</h1>
     <p>
         {{range $i, $locations := .Locations.Locations}}
-        {{- if ne $i 0 -}}, {{end}}
+        {{ if ne $i 0 }} :<br> {{end}}
         {{- $locations -}}
-        {{end}}
+        {{end}} :
     </p>
     <p>
         {{range $i, $dates := .ConcertDates.Dates}}
@@ -51,6 +53,7 @@
         {{- $dates -}}
         {{end}}
     </p>
+    <h1 class="proposition">Suggestion :</h1>
 </section>
 
 <footer>
