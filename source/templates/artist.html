@@ -11,26 +11,31 @@
 <body>
 
 <header>
-    <h1 class="title"> MusicMinder+ </h1>
+    <div class="divLanguage">
+        <h1 class="title"> MusicMinder+ </h1>
+    </div>
+
     <a href="/">
         <div class="divHome">
             <img src="./static/image/home.png" class="imgHome">
             <h1 class="h1Home">Home</h1>
         </div>
     </a>
-    <h1 class="h1Right">aDef</h1>
+    <a href="/research" class="h1Home">
+        research
+    </a>
+    <h1 class="h1Home">langue</h1>
 </header>
 
-<section class="sectionOut">
     <section class="sectionIn">
         <div class="divImage">
-            <img src="{{.Image}}">
+            <img src="{{.Image}}" class="img">
         </div>
         <div class="divText">
             <h1>{{.Name}}</h1>
         </div>
     </section>
-</section>
+
 <section>
     <p>
         {{range $i, $member := .Members}}

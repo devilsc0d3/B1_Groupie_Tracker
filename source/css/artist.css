@@ -1,31 +1,24 @@
 body{
     margin: 0;
     position: relative;
+    background-color: #ffff;
 }
 
 h1{
     color: white;
     font-family: "Comic Sans MS", serif;
     font-size: 80px;
-    margin-top: 60px;
 }
 
 .sectionIn{
     display: flex;
     justify-content: space-evenly;
-    position: absolute;
-    width: 1515px;
-    height: 240px;
-    margin-bottom: auto;
-    margin-top: 12%;
-}
-
-.sectionOut{
     width: 100%;
-    height: 713px;
-    display: inline-block;
+    height: 100vh;
+    margin-bottom: auto;
+    margin-top: 100px;
     background-color: #303030;
-    margin-bottom: 30px;
+
 }
 
 div{
@@ -37,7 +30,7 @@ div{
     height: 240px;
 }
 
-img{
+.img{
     width: 300px;
     height: 300px;
     border-radius : 75px;
@@ -53,4 +46,17 @@ img{
 .divText{
     height: 100px;
     margin-top: 8px;
+}
+
+::-webkit-scrollbar{
+    width: 11px;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffff;
 }
