@@ -16,6 +16,7 @@ header{
     color: white;
     font-size: 20px;
     font-family: Disney, serif;
+    margin-left: 20px;
     letter-spacing : 2.5px;
     font-weight: 550;
 }
@@ -26,8 +27,13 @@ header{
     margin-top: 3.5px;
 }
 
-.divHome{
+.imgGlass{
+    width: 28.5px;
+    height: 28.5px;
+    margin-top: 3.5px;
+}
 
+.divHome{
     justify-content: flex-start;
     display: flex;
 }
@@ -44,7 +50,7 @@ a {
 h1 {
     color: white;
     text-decoration: none;
-    margin: 3px 0px 0 5px;
+    margin: 3px 20px 0 5px;
     font-family: "Segoe UI", serif;
     font-weight: 400;
     font-size: 25px;
@@ -53,7 +59,7 @@ h1 {
 .h1Home{
     color: white;
     text-decoration: none;
-    margin: 3px 0px 0 5px;
+    margin: 3px 20px 0 5px;
     font-family: "Segoe UI", serif;
     font-weight: 400;
     font-size: 25px;
