@@ -57,7 +57,7 @@ a{
 
 .errSearch {
     color: white;
-    font-family: "Comic Sans MS", Serif;
+    font-family: "Comic Sans MS", Serif, serif;
     font-size: 25px;
     margin-top: 6vh;
 }
