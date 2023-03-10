@@ -36,6 +36,7 @@
 <main>
 <form>
     <input type="text" name="search" placeholder="Choose a group" list="programmingLanguages">
+<!--   TODO DATES SANS *-->
     <datalist id="programmingLanguages">
         {{range .Data}}
             <option value="{{.Name}}">{{.Name}} - group</option>

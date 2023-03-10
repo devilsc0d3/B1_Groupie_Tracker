@@ -10,6 +10,10 @@ import (
 )
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
+	for i := 0; i < 52; i++ {
+		Spotify(bdd.Data[i].Name, i)
+	}
+
 	if r.URL.Path != "/" {
 		http.Redirect(w, r, "/404", 303)
 	}
@@ -22,7 +26,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func Spotify(group string) {
+func Spotify(group string, i int) {
 	// Créer une configuration client credentials pour l'authentification OAuth2
 	config := &clientcredentials.Config{
 		ClientID:     "73b0824483b349a7bccb211d72dff641",
@@ -41,11 +45,6 @@ func Spotify(group string) {
 		fmt.Print(err)
 	}
 
-	// Vérifier si des artistes ont été trouvés TEST
-	if len(results.Artists.Artists) == 0 {
-		fmt.Println("Aucun artiste trouvé pour", group)
-	}
-
 	// Sélectionner le premier artiste trouvé
 	artist := results.Artists.Artists[0]
 
@@ -55,18 +54,15 @@ func Spotify(group string) {
 		fmt.Print(err)
 	}
 
-	// Ajouter l'artiste à la liste en fonction de ses catégories de musique
+	groups := map[string][]Artists{}
+
+	// Ajouter l'artiste au dico
 	for _, category := range fullartist.Genres {
-		switch category {
-		case "jazz":
-			fmt.Println(group, "est un artiste de jazz")
-			// Ajouter l'artiste à la liste de jazz
-		case "blues":
-			fmt.Println(group, "est un artiste de blues")
-			// Ajouter l'artiste à la liste de blues
-		default:
-			fmt.Println(group, "est un artiste de", category)
-			// Ajouter l'artiste à une liste générique pour cette catégorie de musique
-		}
+		groups[category] = append(groups[category], bdd.Data[i])
+	}
+
+	// test affiche categories
+	for key := range groups {
+		fmt.Println(key)
 	}
 }

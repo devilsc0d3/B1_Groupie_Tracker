@@ -8,6 +8,7 @@ import (
 func SearchPage(w http.ResponseWriter, r *http.Request) {
 	page, _ := template.ParseFiles("./source/templates/research.html")
 
+	// TODO : check case
 	if r.FormValue("search") != "" {
 		if r.FormValue("search") == "all" {
 			bdd.Show = bdd.Show[:0]
