@@ -39,7 +39,8 @@
         </div>
         <div class="divText">
             <h1>{{.Name}}</h1>
-            <p>~ {{.CreationDate}} ~</p>
+            <p>~ Since {{.CreationDate}} ~</p>
+            <p>♪ First album on {{.FirstAlbum}} ♪</p>
         </div>
     </section>
 
@@ -57,6 +58,7 @@
         <p>{{$key}}  : {{range $value}} <span>{{.}}</span> {{end}}</p><br>
         {{end}}
     </p>
+    <h1 class="proposition">Map :</h1>
     <h1 class="proposition">Suggestion :</h1>
 </section>
 
