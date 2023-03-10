@@ -16,7 +16,7 @@ type Artists struct {
 	FirstAlbum   string   `json:"firstAlbum"`
 	Locations    Locations
 	ConcertDates Dates
-	Relations    string `json:"relations"`
+	Relations    Relation
 }
 
 type Base struct {
@@ -24,6 +24,11 @@ type Base struct {
 	Data   []Artists
 	Show   []Artists
 	SetImg []string
+}
+
+type Relation struct {
+	ID   int64               `json:"id"`
+	Dico map[string][]string `json:"datesLocations"`
 }
 
 type Locations struct {
@@ -39,6 +44,7 @@ type Dates struct {
 
 var bdd Base
 var dates Dates
+var rel Relation
 
 func GetApi(url string, target interface{}) {
 	response, err := http.Get(url)
@@ -54,12 +60,15 @@ func GetApi(url string, target interface{}) {
 }
 
 func Variable() {
+
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
 	for i := 0; i < len(bdd.Data); i++ {
 		GetApi("https://groupietrackers.herokuapp.com/api/locations/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Locations)
 		GetApi("https://groupietrackers.herokuapp.com/api/dates/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].ConcertDates)
+		GetApi("https://groupietrackers.herokuapp.com/api/relation/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Relations)
 	}
+
 	bdd.SetImg = []string{"ursula.png", "bob.webp", "err_404_8.webp"}
 	//bdd.SetImg = append(bdd.SetImg, "ursula.png")
 	//bdd.SetImg = append(bdd.SetImg, "bob.webp")
