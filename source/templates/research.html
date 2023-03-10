@@ -65,6 +65,16 @@
     {{else}}
         <h1 class="errSearch">No results for your search...</h1>
     {{end}}
+
+
+    {{if len .Show}}
+    <!-- If there are results for the search -->
+    <h1>Results for your search:</h1>
+    <!-- display the results here -->
+    {{else}}
+    <!-- If there are no results for the search -->
+    <h1>No results for your search</h1>
+    {{end}}
 </section>
 </main>
 
