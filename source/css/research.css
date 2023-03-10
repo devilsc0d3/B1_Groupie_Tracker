@@ -10,7 +10,9 @@ main {
     min-height: 89vh
 }
 
-input{
+
+
+input[type="text"]{
     width: 99.03vw;
     height: 12.5vh;
     border: none;

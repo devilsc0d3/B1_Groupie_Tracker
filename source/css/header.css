@@ -55,6 +55,30 @@ h1 {
     font-weight: 400;
     font-size: 25px;
 }
+select {
+    background-color: transparent;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+}
+
+select option:checked {
+    background-color: #007bff;
+    color: #fff;
+}
+
+select option:not(:checked) {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+input[type="submit"] {
+    background-color: rgb(137, 159, 173);
+    border-radius: 10px;
+    border: none;
+    color: #ffff;
+
+}
 
 .h1Home{
     color: white;

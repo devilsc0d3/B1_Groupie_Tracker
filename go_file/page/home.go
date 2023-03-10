@@ -10,9 +10,9 @@ import (
 )
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
-	for i := 0; i < 52; i++ {
-		Spotify(bdd.Data[i].Name, i)
-	}
+	//for i := 0; i < 52; i++ {
+	//	Spotify(bdd.Data[i].Name, i)
+	//}
 
 	if r.URL.Path != "/" {
 		http.Redirect(w, r, "/404", 303)
