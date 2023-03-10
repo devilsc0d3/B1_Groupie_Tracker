@@ -6,9 +6,8 @@ body{
 }
 
 main {
-    height: auto;
     flex-grow: 1;
-    min-height: 100vh
+    min-height: 89vh
 }
 
 input{
