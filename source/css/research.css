@@ -17,7 +17,7 @@ input{
     border: none;
     background-color: #9b9b9b;
     background-image: linear-gradient(to bottom, #484848, transparent);
-    margin-top: 7.67vh;
+    margin-top: 11vh;
     position: fixed;
     font-size: 30px;
     color: white;
@@ -53,6 +53,13 @@ a{
     margin: 20px;
     width: 250px;
     height: 325px;
+}
+
+.errSearch {
+    color: white;
+    font-family: "Comic Sans MS", Serif;
+    font-size: 25px;
+    margin-top: 6vh;
 }
 
 .image{

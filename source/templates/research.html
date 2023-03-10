@@ -53,13 +53,17 @@
 </form>
 
 <section class="sectionImage">
-    {{range .Show}}
-    <a href="{{.ID}}">
-        <div class="divImage">
-            <img src="{{.Image}}" class="image" alt="Image group">
-            <h1 class="h1Name">{{.Name}}</h1>
-        </div>
-    </a>
+    {{if len .Show}}
+        {{range .Show}}
+        <a href="{{.ID}}">
+            <div class="divImage">
+                <img src="{{.Image}}" class="image" alt="Image group">
+                <h1 class="h1Name">{{.Name}}</h1>
+            </div>
+        </a>
+        {{end}}
+    {{else}}
+        <h1 class="errSearch">No results for your search...</h1>
     {{end}}
 </section>
 </main>
