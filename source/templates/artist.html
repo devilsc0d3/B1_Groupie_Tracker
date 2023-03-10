@@ -53,15 +53,8 @@
     </p>
     <h1 class="proposition">Concert :</h1>
     <p>
-        {{range $i, $locations := .Locations.Locations}}
-        {{ if ne $i 0 }} :<br> {{end}}
-        {{- $locations -}}
-        {{end}} :
-    </p>
-    <p>
-        {{range $i, $dates := .ConcertDates.Dates}}
-        {{- if ne $i 0 -}}, {{end}}
-        {{- $dates -}}
+        {{range $key, $value := .Relations.Dico}}
+        <p>{{$key}}  : {{range $value}} <span>{{.}}</span> {{end}}</p><br>
         {{end}}
     </p>
     <h1 class="proposition">Suggestion :</h1>

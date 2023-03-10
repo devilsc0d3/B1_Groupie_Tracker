@@ -10,6 +10,16 @@ h1{
     font-size: 80px;
 }
 
+span{
+    background-color: #8aa0ae;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.lineEffect {
+    border-bottom: 2px solid rgba(255, 255, 255, 25%);
+}
+
 .sectionIn{
     display: flex;
     justify-content: space-evenly;
