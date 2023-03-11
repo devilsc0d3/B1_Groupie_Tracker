@@ -17,20 +17,20 @@ header{
     font-size: 20px;
     font-family: Disney, serif;
     margin-left: 20px;
-    letter-spacing : 2.5px;
+    letter-spacing : 3px;
     font-weight: 550;
 }
 
 .imgHome{
-    width: 28.5px;
-    height: 28.5px;
-    margin-top: 3.5px;
+    width: 28px;
+    height: 28px;
+    margin-top: 3px;
 }
 
 .imgGlass{
-    width: 28.5px;
-    height: 28.5px;
-    margin-top: 3.5px;
+    width: 28px;
+    height: 28px;
+    margin-top: 4px;
 }
 
 .divHome{
@@ -38,10 +38,16 @@ header{
     display: flex;
 }
 
+.divLanguage{
+    justify-content: flex-start;
+    display: flex;
+    width: 300px;
+}
+
 a {
     color: white;
     text-decoration: none;
-    margin: 3px 0px 0 5px;
+    margin: 3px 0 0 5px;
     font-family: "Segoe UI", serif;
     font-weight: 400;
     font-size: 25px;
@@ -50,11 +56,13 @@ a {
 h1 {
     color: white;
     text-decoration: none;
-    margin: 3px 20px 0 5px;
+    margin: 3px 0 0 5px;
     font-family: "Segoe UI", serif;
     font-weight: 400;
     font-size: 25px;
 }
+
+/* menu */
 select {
     background-color: transparent;
     border-radius: 10px;
@@ -79,18 +87,18 @@ input[type="submit"] {
     border: none;
     color: #ffff;
     font-size: 20px;
-
 }
 
-.lg {
+.menu {
     height: 20px;
-    margin: 10px 10px 0 0;
+    margin: 10px 10px 0 10px;
+
 }
 
 .h1Home{
     color: white;
     text-decoration: none;
-    margin: 3px 20px 0 5px;
+    margin: 3px 0 0 5px;
     font-family: "Segoe UI", serif;
     font-weight: 400;
     font-size: 25px;
@@ -106,7 +114,7 @@ input[type="submit"] {
     position: absolute;
     left: 0;
     bottom: -2px;
-    width: 0%;
+    width: 0;
     height: 2px;
     background-color: white;
     transition: transform 0.3s ease-in-out;
@@ -121,7 +129,6 @@ input[type="submit"] {
     width: 75%;
     transform: scaleX(1);
 }
-
 
 @font-face {
     font-family: 'Disney';
