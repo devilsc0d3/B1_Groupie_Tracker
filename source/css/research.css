@@ -6,15 +6,14 @@ body{
 }
 
 main {
-    height: auto;
     flex-grow: 1;
-    min-height: 100vh
+    min-height: 89vh
 }
 
-input{
+input[type="text"]{
+    border: none;
     width: 99.03vw;
     height: 12.5vh;
-    border: none;
     background-color: #9b9b9b;
     background-image: linear-gradient(to bottom, #484848, transparent);
     margin-top: 11vh;

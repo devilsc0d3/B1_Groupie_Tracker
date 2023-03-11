@@ -1,13 +1,15 @@
 footer {
     background-color: #001126;
     text-align: center;
+    align-items: center;
+    height: 11vh;
 }
 
 .credit {
     margin: 0;
     color: #ffff;
     text-decoration: none;
-    font-family: "Comic Sans MS";
+    font-family: "Comic Sans MS", serif;
     font-size: 15px;
 }
 
