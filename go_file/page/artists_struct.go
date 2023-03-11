@@ -27,8 +27,8 @@ type Base struct {
 }
 
 type Relation struct {
-	ID   int64               `json:"id"`
-	Dico map[string][]string `json:"datesLocations"`
+	ID       int64               `json:"id"`
+	Relation map[string][]string `json:"datesLocations"`
 }
 
 type Locations struct {
