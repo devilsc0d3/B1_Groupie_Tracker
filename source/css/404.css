@@ -2,8 +2,10 @@ body {
     margin: 0;
     background-color: #1d1d38;
 }
-.center {
-    text-align: center;
+
+img {
+    margin: 50px 0 0 0;
+    width: 800px;
 }
 
 h1 {
@@ -18,7 +20,6 @@ h2 {
     font-size: 80px;
     font-weight: 500;
     color: #ffff;
-
 }
 
 p {
@@ -31,18 +32,13 @@ a {
     color: #ffff;
 }
 
-img {
-    margin: 50px 0 0 0;
+.center {
     text-align: center;
-    width: 800px;
-}
-div{
     margin-bottom: 25vh;
 }
 
 ::-webkit-scrollbar{
     width: 11px;
-    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track {
