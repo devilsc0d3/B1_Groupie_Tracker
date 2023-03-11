@@ -1,90 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./static/css/research.css">
-    <link rel="stylesheet" href="./static/css/header.css">
-    <link rel="stylesheet" href="./static/css/footer.css">
-    <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
-    <meta charset="UTF-8">
-    <title>MM+</title>
-</head>
-<body>
+    <head>
+        <link rel="stylesheet" href="http://localhost:8080/static/css/research.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/header.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/footer.css">
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
+        <meta charset="UTF-8">
+        <title>MM+</title>
+    </head>
 
-<header>
-    <h1 class="title"> MusicMinder+ </h1>
+    <body>
+        <header>
+            <h1 class="title"> MusicMinder+ </h1>
 
-    <a href="/" class="underlineEffect">
-        <div class="divHome">
-            <img src="./static/image/home.png" class="imgHome">
-            <h1 class="h1Home">Home</h1>
-        </div>
-    </a>
+            <a href="/" class="underlineEffect">
+                <div class="divHome">
+                    <img src="http://localhost:8080/static/image/home.png" class="imgHome" alt="home logo">
+                    <h1 class="h1Home">Home</h1>
+                </div>
+            </a>
 
-    <a href="/research" class="underlineEffect">
-        <div class="divHome">
-            <img class="imgHome" src="./static/image/research.png">
-            <h1 class="h1Search">Research</h1>
-        </div>
-    </a>
+            <a href="/research" class="underlineEffect">
+                <div class="divHome">
+                    <img class="imgHome" src="http://localhost:8080/static/image/research.png" alt="research logo">
+                    <h1 class="h1Search">Research</h1>
+                </div>
+            </a>
 
-    <div class="divHome">
-        <img class="imgHome" src="./static/image/globe.png">
-        <h1 class="h1Search">Language</h1>
-        <form method="post" class="lg">
-            <select name="language">
-                <option value="fr">fr</option>
-                <option value="es">en</option>
-                <option value="es">es</option>
-                <option value="ge">ge</option>
-            </select>
-            <input type="submit" value="send" class="but">
-        </form>
-    </div>
-</header>
-
-<main>
-<form>
-    <input type="text" name="search" placeholder="Choose a group" list="programmingLanguages">
-<!--   TODO DATES SANS *-->
-    <datalist id="programmingLanguages">
-        {{range .Data}}
-            <option value="{{.Name}}">{{.Name}} - group</option>
-            {{range .Members}}
-                <option value="{{.}}">{{.}} - members</option>
-            {{end}}
-            {{range .Locations.Locations}}
-                <option value="{{.}}">{{.}} - locations</option>
-            {{end}}
-            {{range .ConcertDates.Dates}}
-                <option value="{{.}}">{{.}} - dates</option>
-            {{end}}
-        {{end}}
-    </datalist>
-</form>
-
-<section class="sectionImage">
-    {{if len .Show}}
-        {{range .Show}}
-        <a href="{{.ID}}">
-            <div class="divImage">
-                <img src="{{.Image}}" class="image" alt="Image group">
-                <h1 class="h1Name">{{.Name}}</h1>
+            <div class="divHome">
+                <img class="imgHome" src="http://localhost:8080/static/image/globe.png" alt="globe logo">
+                <h1 class="h1Search">Language</h1>
+                <form method="post" class="lg">
+                    <label>
+                        <select name="language">
+                            <option value="fr">fr</option>
+                            <option value="es">en</option>
+                            <option value="es">es</option>
+                            <option value="ge">ge</option>
+                        </select>
+                    </label>
+                    <input type="submit" value="send" class="but">
+                </form>
             </div>
-        </a>
-        {{end}}
-    {{else}}
-        <h1 class="errSearch">No results for your search...</h1>
-    {{end}}
+        </header>
 
-</section>
-</main>
+        <main>
+            <form>
+                <label>
+                    <input type="text" name="search" placeholder="Choose a group" list="programmingLanguages" maxlength="64">
+                </label>
+                <!--   TODO DATES SANS *-->
+                <datalist id="programmingLanguages">
+                    {{range .Data}}
+                        <option value="{{.Name}}">{{.Name}} - group</option>
+                        {{range .Members}}
+                            <option value="{{.}}">{{.}} - members</option>
+                        {{end}}
+                        {{range .Locations.Locations}}
+                            <option value="{{.}}">{{.}} - locations</option>
+                        {{end}}
+                        {{range .ConcertDates.Dates}}
+                            <option value="{{.}}">{{.}} - dates</option>
+                        {{end}}
+                    {{end}}
+                </datalist>
+            </form>
 
-<footer>
-    <h1 class="title"> MusicMinder+ </h1>
-    <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
-    <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
-    <p class="credit">Cenac Lucille - Fauré Léo</p>
-</footer>
+            <section class="sectionImage">
+                {{if len .Show}}
+                    {{range .Show}}
+                        <a href="{{.ID}}">
+                            <div class="divImage">
+                                <img src="{{.Image}}" class="image" alt="Image group">
+                                <h1 class="h1Name">{{.Name}}</h1>
+                            </div>
+                        </a>
+                    {{end}}
+                {{else}}
+                    <h1 class="errSearch">No results for your search...</h1>
+                {{end}}
+            </section>
+        </main>
 
-</body>
+        <footer>
+            <h1 class="title"> MusicMinder+ </h1>
+            <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
+            <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
+            <p class="credit">Cenac Lucille - Fauré Léo</p>
+        </footer>
+    </body>
 </html>

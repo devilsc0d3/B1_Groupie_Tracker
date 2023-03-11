@@ -1,15 +1,12 @@
 package page
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 )
 
 func SearchPage(w http.ResponseWriter, r *http.Request) {
 	page, _ := template.ParseFiles("./source/templates/research.html")
-
-	fmt.Print(r.FormValue("language"))
 
 	// TODO : check case
 	if r.FormValue("search") != "" {
