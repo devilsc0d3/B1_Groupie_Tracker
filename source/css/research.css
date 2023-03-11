@@ -10,12 +10,10 @@ main {
     min-height: 89vh
 }
 
-
-
 input[type="text"]{
+    border: none;
     width: 99.03vw;
     height: 12.5vh;
-    border: none;
     background-color: #9b9b9b;
     background-image: linear-gradient(to bottom, #484848, transparent);
     margin-top: 11vh;

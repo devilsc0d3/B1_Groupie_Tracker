@@ -10,8 +10,16 @@ import (
 )
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
+
 	//for i := 0; i < 52; i++ {
 	//	Spotify(bdd.Data[i].Name, i)
+	//}
+	//// test affiche categories
+	//for key, valeur := range groups {
+	//	fmt.Println(key, ":")
+	//	for i := 0; i < len(valeur); i++ {
+	//		fmt.Println(valeur[i].Name)
+	//	}
 	//}
 
 	if r.URL.Path != "/" {
@@ -25,6 +33,8 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
+
+var groups = map[string][]Artists{}
 
 func Spotify(group string, i int) {
 	// Créer une configuration client credentials pour l'authentification OAuth2
@@ -54,15 +64,9 @@ func Spotify(group string, i int) {
 		fmt.Print(err)
 	}
 
-	groups := map[string][]Artists{}
-
 	// Ajouter l'artiste au dico
 	for _, category := range fullartist.Genres {
 		groups[category] = append(groups[category], bdd.Data[i])
 	}
 
-	// test affiche categories
-	for key := range groups {
-		fmt.Println(key)
-	}
 }
