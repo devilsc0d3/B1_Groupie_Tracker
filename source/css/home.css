@@ -1,23 +1,32 @@
+body{
+    margin: 0;
+    background-color: rgb(29, 29, 56);
+}
+
+a{
+    text-decoration : none;
+    margin-top: 50px;
+}
 
 .center{
     text-align: center;
 }
 
-.langue {
+.language {
     position: absolute;
-    margin: 20px 0 0 20px;
     display: flex;
-    width: 200px;
+    width: 300px;
+    margin: 20px 0 0 20px;
 }
 
 .title{
+    position: center;
     margin-top: 36vh;
-    color: white;
     font-size: 150px;
     font-family: Disney, serif;
-    letter-spacing : 5px;
     font-weight: 550;
-    position: center;
+    letter-spacing : 5px;
+    color: white;
 }
 
 .sectionTitle{
@@ -37,12 +46,6 @@
     display: inline-block;
     background-color: rgba(36, 36, 84, 0.8);
     z-index: 1;
-}
-
-body{
-    margin: 0;
-    padding: 0;
-    background-color: rgb(29, 29, 56);
 }
 
 .sectionImage{
@@ -70,14 +73,9 @@ body{
     margin-top: 71vh;
 }
 
-a{
-    text-decoration : none;
-    margin-top: 50px;
-}
-
 .h1Name{
     color: white;
-    font-family: "Comic Sans MS", Serif;
+    font-family: "Comic Sans MS", Serif, serif;
     font-size: 27px;
     font-weight: 60;
 }
@@ -86,28 +84,24 @@ a{
     color: white;
     font-family: "Segoe UI", serif;
     font-size: 25px;
+    font-weight: 400;
     text-decoration: none;
     margin: -6px 0 0 5px;
-    font-weight: 400;
 }
-
 
 .h1Search::before {
     content: '';
     position: absolute;
     left: 0;
     bottom: -2px;
-    width: 0%;
+    width: 0;
     height: 2px;
     background-color: white;
     transition: transform 0.3s ease-in-out;
     transform-origin: left;
     transform: scaleX(0);
-    margin-top: 0;
-    margin-left: 37px;
+    margin: 0 0 0 37px;
 }
-
-
 
 .h1Search:hover::before {
     width: 75%;
@@ -132,7 +126,6 @@ a{
     border: solid #ffff;
     transform: scale(1.1);
     box-shadow: inset 0 0 500px rgba(255, 0, 0, 0.9);
-
 }
 
 .glass{
@@ -149,8 +142,15 @@ a{
     margin: 20px 60px 0 0;
 }
 
+/* language */
+.menu {
+    height: 20px;
+    align-items: center;
+    display: flex;
+    width: 200px;
+    margin: 4px 0 0 10px;
+}
 
-/*langueage*/
 select {
     background-color: transparent;
     border-radius: 10px;
@@ -175,15 +175,6 @@ input[type="submit"] {
     border: none;
     color: #ffff;
     font-size: 20px;
-
-}
-
-.lg {
-    align-items: center;
-    height: 20px;
-    display: flex;
-    width: 200px;
-    margin: 4px 0px 0 10px;
 }
 
 @font-face {
@@ -191,15 +182,11 @@ input[type="submit"] {
     src: url("../font/waltograph42.otf") format("truetype");
 }
 
-
 ::-webkit-scrollbar{
     width: 12px;
-    height: auto;
-    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    border-radius: 9px;
     background: rgba(0,0,0,0);
 }
 

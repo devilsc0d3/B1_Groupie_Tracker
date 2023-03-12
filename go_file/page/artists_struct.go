@@ -20,15 +20,14 @@ type Artists struct {
 }
 
 type Base struct {
-	Nbr    int
-	Data   []Artists
-	Show   []Artists
-	SetImg []string
+	Nbr  int
+	Data []Artists
+	Show []Artists
 }
 
 type Relation struct {
-	ID   int64               `json:"id"`
-	Dico map[string][]string `json:"datesLocations"`
+	ID       int64               `json:"id"`
+	Relation map[string][]string `json:"datesLocations"`
 }
 
 type Locations struct {
@@ -69,9 +68,6 @@ func Variable() {
 		GetApi("https://groupietrackers.herokuapp.com/api/relation/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Relations)
 	}
 
-	bdd.SetImg = []string{"ursula.png", "bob.webp", "err_404_8.webp"}
-	//bdd.SetImg = append(bdd.SetImg, "ursula.png")
-	//bdd.SetImg = append(bdd.SetImg, "bob.webp")
 	for i := 0; i < len(bdd.Data); i++ {
 		artist := bdd.Data[i]
 		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {

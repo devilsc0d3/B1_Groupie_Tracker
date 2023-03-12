@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./static/css/artist.css">
-    <link rel="stylesheet" href="./static/css/header.css">
-    <link rel="stylesheet" href="./static/css/footer.css">
-    <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
-    <meta charset="UTF-8">
-    <title>Artist</title>
-</head>
+    <head>
+        <link rel="stylesheet" href="http://localhost:8080/static/css/artist.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/header.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/footer.css">
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
+        <meta charset="UTF-8">
+        <title>Artist</title>
+    </head>
+
 <body>
+    <header>
+        <h1 class="title"> MusicMinder+ </h1>
+        <a href="/" class="underlineEffect">
+            <div class="divHome">
+                <img src="http://localhost:8080/static/image/home.png" class="imgHome" alt="home icon">
+                <h1 class="h1Home">Home</h1>
+            </div>
+        </a>
 
-<header>
-    <h1 class="title"> MusicMinder+ </h1>
+        <a href="/research" class="underlineEffect">
+            <div class="divHome">
+                <img class="imgHome" src="http://localhost:8080/static/image/research.png" alt="research icon">
+                <h1 class="h1Search">Research</h1>
+            </div>
+        </a>
 
-    <a href="/" class="underlineEffect">
         <div class="divHome">
-            <img src="./static/image/home.png" class="imgHome">
-            <h1 class="h1Home">Home</h1>
+            <img class="imgHome" src="http://localhost:8080/static/image/globe.png" alt="globe icon">
+            <h1 class="h1Search">Language</h1>
+            <form method="post" class="menu">
+                <label>
+                    <select name="language">
+                        <option value="fr">fr</option>
+                        <option value="es">en</option>
+                        <option value="es">es</option>
+                        <option value="ge">ge</option>
+                    </select>
+                </label>
+                <input type="submit" value="send" class="but">
+            </form>
         </div>
-    </a>
+    </header>
 
-    <a href="/research" class="underlineEffect">
-        <div class="divHome">
-            <img class="imgHome" src="./static/image/research.png">
-            <h1 class="h1Search">Research</h1>
-        </div>
-    </a>
-
-    <div class="divHome">
-        <img class="imgHome" src="./static/image/globe.png">
-        <h1 class="h1Search">Language</h1>
-        <form method="post" class="lg">
-            <select name="language">
-                <option value="fr">fr</option>
-                <option value="es">en</option>
-                <option value="es">es</option>
-                <option value="ge">ge</option>
-            </select>
-            <input type="submit" value="send" class="but">
-        </form>
-    </div>
-</header>
     <section class="sectionIn">
         <div class="divImage">
-            <img src="{{.Image}}" class="img">
+            <img src="{{.Image}}" class="img" alt="logo group">
         </div>
         <div class="divText">
             <h1>{{.Name}}</h1>
             <p>~ Since {{.CreationDate}} ~</p>
             <p>♪ First album on {{.FirstAlbum}} ♪</p>
         </div>
-
     </section>
 
-<section>
-    <h1 class="proposition">Members :</h1>
-    <p>
-        {{range $i, $member := .Members}}
-        {{- if ne $i 0 -}}, {{end}}
-        {{- $member -}}
-        {{end}}
-    </p>
-    <h1 class="proposition">Concert :</h1>
-    <p>
-        {{range $key, $value := .Relations.Dico}}
-        <p>{{$key}}  : {{range $value}} <span>{{.}}</span> {{end}}</p><br>
-        {{end}}
-    </p>
-    <h1 class="proposition">Map :</h1>
-    <h1 class="proposition">Suggestion :</h1>
-</section>
+    <section>
+        <h1 class="proposition">Members :</h1>
+        <p>
+            {{range $i, $member := .Members}}
+                {{- if ne $i 0 -}}, {{end}}
+                {{- $member -}}
+            {{end}}
+        </p>
+        <h1 class="proposition">Concert :</h1>
+            {{range $key, $value := .Relations.Relation}}
+                <p> {{$key}}  : {{range $value}} <span>{{.}}</span> {{end}} </p>
+                <br>
+            {{end}}
+        <h1 class="proposition">Map :</h1>
+        <h1 class="proposition">Suggestion :</h1>
+    </section>
 
-<footer>
-    <h1 class="title_footer"> MusicMinder+ </h1>
-    <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
-    <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
-    <p class="credit">Cenac Lucille - Fauré Léo</p>
-</footer>
-
+    <footer>
+        <h1 class="title_footer"> MusicMinder+ </h1>
+        <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
+        <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
+        <p class="credit">Cenac Lucille - Fauré Léo</p>
+    </footer>
 </body>
 </html>
