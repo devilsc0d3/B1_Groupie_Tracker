@@ -17,5 +17,5 @@ func Error(w http.ResponseWriter, _ *http.Request) {
 }
 
 func RandomInt() int {
-	return rand.Intn(3)
+	return rand.Intn(7)
 }
