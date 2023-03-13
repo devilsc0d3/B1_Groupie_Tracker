@@ -3,6 +3,7 @@ package page
 import (
 	"html/template"
 	"net/http"
+	"strconv"
 )
 
 func SearchPage(w http.ResponseWriter, r *http.Request) {
@@ -19,20 +20,20 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 			bdd.Show = bdd.Show[0:0]
 			for i := 0; i < 52; i++ {
 				// name
-				if bdd.Data[i].Name == r.FormValue("search") {
+				if ToLower(bdd.Data[i].Name) == ToLower(r.FormValue("search")) {
 					bdd.Show = append(bdd.Show, bdd.Data[i])
 				}
 
 				// members
 				for j := 0; j < len(bdd.Data[i].Members); j++ {
-					if bdd.Data[i].Members[j] == r.FormValue("search") {
+					if ToLower(bdd.Data[i].Members[j]) == ToLower(r.FormValue("search")) {
 						bdd.Show = append(bdd.Show, bdd.Data[i])
 					}
 				}
 
 				//locations
 				for j := 0; j < len(bdd.Data[i].Locations.Locations); j++ {
-					if bdd.Data[i].Locations.Locations[j] == r.FormValue("search") {
+					if ToLower(bdd.Data[i].Locations.Locations[j]) == ToLower(r.FormValue("search")) {
 						bdd.Show = append(bdd.Show, bdd.Data[i])
 					}
 				}
@@ -43,6 +44,11 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 						bdd.Show = append(bdd.Show, bdd.Data[i])
 					}
 				}
+
+				//creation dates
+				if strconv.FormatInt(bdd.Data[i].CreationDate, 10) == r.FormValue("search") {
+					bdd.Show = append(bdd.Show, bdd.Data[i])
+				}
 			}
 		}
 	}
@@ -51,4 +57,16 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return
 	}
+}
+
+func ToLower(s string) string {
+	tr := ""
+	for i := 0; i < len(s); i++ {
+		if s[i] >= 65 && s[i] <= 90 {
+			tr += string(rune(s[i] + 32))
+		} else {
+			tr += string(rune(s[i]))
+		}
+	}
+	return tr
 }

@@ -11,6 +11,7 @@
 
 <body>
     <header>
+        <a href="#concert">gyf</a>
         <h1 class="title"> MusicMinder+ </h1>
         <a href="/" class="underlineEffect">
             <div class="divHome">
@@ -49,7 +50,7 @@
         </div>
         <div class="divText">
             <h1 class="name">{{.Name}}</h1>
-            <p>~ Since {{.CreationDate}} ~</p>
+            <p>★ Since {{.CreationDate}} ★</p>
             <p>♪ First album on {{.FirstAlbum}} ♪</p>
         </div>
     </section>
@@ -62,7 +63,7 @@
                 {{- $member -}}
             {{end}}
         </p>
-        <h1 class="proposition">Concert :</h1>
+        <h1 class="proposition" id="concert">Concert :</h1>
             {{range $key, $value := .Relations.Relation}}
                 <p> {{$key}}  : {{range $value}} <span>{{.}}</span> {{end}} </p>
                 <br>

@@ -45,7 +45,7 @@
         </header>
 
         <main>
-            <form>
+            <form method="post">
                 <label>
                     <input type="text" name="search" placeholder="Choose a group" list="programmingLanguages" maxlength="64">
                 </label>
@@ -53,6 +53,7 @@
                 <datalist id="programmingLanguages">
                     {{range .Data}}
                         <option value="{{.Name}}">{{.Name}} - group</option>
+                        <option value="{{.CreationDate}}">{{.CreationDate}} - CreationDate</option>
                         {{range .Members}}
                             <option value="{{.}}">{{.}} - members</option>
                         {{end}}

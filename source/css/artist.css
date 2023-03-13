@@ -90,3 +90,8 @@ span{
 ::-webkit-scrollbar-thumb {
     background: #ffff;
 }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 12vh;
+}
