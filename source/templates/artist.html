@@ -11,7 +11,6 @@
 
 <body>
     <header>
-        <a href="#concert">gyf</a>
         <h1 class="title"> MusicMinder+ </h1>
         <a href="/" class="underlineEffect">
             <div class="divHome">
@@ -52,11 +51,25 @@
             <h1 class="name">{{.Name}}</h1>
             <p>★ Since {{.CreationDate}} ★</p>
             <p>♪ First album on {{.FirstAlbum}} ♪</p>
+            <div class="divBehavior">
+                <a href="#members">
+                    <img src="./static/image/group.png" class="scrollBehavior">
+                </a>
+                <a href="#concert">
+                    <img src="./static/image/live.png" class="scrollBehavior">
+                </a>
+                <a href="#map">
+                    <img src="./static/image/emplacement.png" class="scrollBehavior">
+                </a>
+                <a href="#suggestion">
+                    <img src="./static/image/musical.png" class="scrollBehavior">
+                </a>
+            </div>
         </div>
     </section>
 
     <section>
-        <h1 class="proposition">Members :</h1>
+        <h1 class="proposition" id="members">Members :</h1>
         <p>
             {{range $i, $member := .Members}}
                 {{- if ne $i 0 -}}, {{end}}
@@ -68,8 +81,8 @@
                 <p> {{$key}}  : {{range $value}} <span>{{.}}</span> {{end}} </p>
                 <br>
             {{end}}
-        <h1 class="proposition">Map :</h1>
-        <h1 class="proposition">Suggestion :</h1>
+        <h1 class="proposition" id="map">Map :</h1>
+        <h1 class="proposition" id="suggestion">Suggestion :</h1>
     </section>
 
     <footer>

@@ -21,28 +21,24 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 				if ToLower(bdd.Data[i].Name) == ToLower(r.FormValue("search")) {
 					bdd.Show = append(bdd.Show, bdd.Data[i])
 				}
-
 				// members
 				for j := 0; j < len(bdd.Data[i].Members); j++ {
 					if ToLower(bdd.Data[i].Members[j]) == ToLower(r.FormValue("search")) {
 						bdd.Show = append(bdd.Show, bdd.Data[i])
 					}
 				}
-
 				//locations
 				for j := 0; j < len(bdd.Data[i].Locations.Locations); j++ {
 					if ToLower(bdd.Data[i].Locations.Locations[j]) == ToLower(r.FormValue("search")) {
 						bdd.Show = append(bdd.Show, bdd.Data[i])
 					}
 				}
-
 				//dates
 				for j := 0; j < len(bdd.Data[i].ConcertDates.Dates); j++ {
 					if bdd.Data[i].ConcertDates.Dates[j] == r.FormValue("search") {
 						bdd.Show = append(bdd.Show, bdd.Data[i])
 					}
 				}
-
 				//creation dates
 				if strconv.FormatInt(bdd.Data[i].CreationDate, 10) == r.FormValue("search") {
 					bdd.Show = append(bdd.Show, bdd.Data[i])
@@ -50,7 +46,6 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-
 	if r.FormValue("language") == "en" {
 		bdd.Language.CurrentLang = bdd.Language.En
 	} else if r.FormValue("language") == "fr" {
@@ -60,13 +55,11 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 	} else if r.FormValue("language") == "ge" {
 		bdd.Language.CurrentLang = bdd.Language.Ge
 	}
-
 	err := page.ExecuteTemplate(w, "research.html", bdd)
 	if err != nil {
 		return
 	}
 }
-
 func ToLower(s string) string {
 	tr := ""
 	for i := 0; i < len(s); i++ {
