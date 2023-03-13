@@ -19,10 +19,19 @@ type Artists struct {
 	Relations    Relation
 }
 
+type Language struct {
+	En          []string
+	Fr          []string
+	Es          []string
+	Ge          []string
+	CurrentLang []string
+}
+
 type Base struct {
-	Nbr  int
-	Data []Artists
-	Show []Artists
+	Nbr      int
+	Data     []Artists
+	Show     []Artists
+	Language Language
 }
 
 type Relation struct {
@@ -59,6 +68,21 @@ func GetApi(url string, target interface{}) {
 }
 
 func Variable() {
+
+	bdd.Language.En = []string{"Home", "Research", "Language", "send",
+		"No results for your search...", "Group, member, location, concert date",
+		"Since", "First album on", "Members", "Concerts", "Map", "Suggestions"}
+	bdd.Language.Fr = []string{"Accueil", "Recherche", "Langue", "envoyer",
+		"Aucun résultat pour votre recherche...",
+		"Depuis", "Premier album le", "Membres", "Concerts", "Carte", "Suggestions"}
+	bdd.Language.Es = []string{"Inicio", "Búsqueda", "Idioma", "enviar",
+		"No hay resultados para su búsqueda...", "Group, member, location, concert date",
+		"Desde", "Primer álbum el", "Miembros", "Conciertos", "Mapa", "Sugerencias"}
+	bdd.Language.Ge = []string{"Heimat", "Forschung", "Sprache", "senden",
+		"Keine Ergebnisse für Ihre Suche...", "Group, member, location, concert date",
+		"Seit", "Erstes Album auf", "Mitglieder", "Konzerte", "Karte", "Vorschläge"}
+
+	bdd.Language.CurrentLang = bdd.Language.En
 
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)

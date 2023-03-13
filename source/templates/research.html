@@ -16,20 +16,20 @@
             <a href="/" class="underlineEffect">
                 <div class="divHome">
                     <img src="http://localhost:8080/static/image/home.png" class="imgHome" alt="home logo">
-                    <h1 class="h1Home">Home</h1>
+                    <h1 class="h1Home">{{index .Language.CurrentLang 1}}</h1>
                 </div>
             </a>
 
             <a href="/research" class="underlineEffect">
                 <div class="divHome">
                     <img class="imgHome" src="http://localhost:8080/static/image/research.png" alt="research logo">
-                    <h1 class="h1Search">Research</h1>
+                    <h1 class="h1Search">{{index .Language.CurrentLang 1}}</h1>
                 </div>
             </a>
 
             <div class="divLanguage underlineEffect">
                 <img class="imgHome" src="http://localhost:8080/static/image/globe.png" alt="globe logo">
-                <h1 class="h1Search">Language</h1>
+                <h1 class="h1Search">{{index .Language.CurrentLang 2}}</h1>
                 <form method="post" class="menu">
                     <label>
                         <select name="language">
@@ -39,20 +39,21 @@
                             <option value="ge">ge</option>
                         </select>
                     </label>
-                    <input type="submit" value="send" class="but">
+                    <input type="submit" value="{{index .Language.CurrentLang 3}}" class="but">
                 </form>
             </div>
         </header>
 
         <main>
-            <form>
+            <form method="post">
                 <label>
-                    <input type="text" name="search" placeholder="Choose a group" list="programmingLanguages" maxlength="64">
+                    <input type="text" name="search" placeholder="{{index .Language.CurrentLang 5}}" list="suggestions" maxlength="64">
                 </label>
                 <!--   TODO DATES SANS *-->
-                <datalist id="programmingLanguages">
+                <datalist id="suggestions">
                     {{range .Data}}
                         <option value="{{.Name}}">{{.Name}} - group</option>
+                        <option value="{{.CreationDate}}">{{.CreationDate}} - CreationDate</option>
                         {{range .Members}}
                             <option value="{{.}}">{{.}} - members</option>
                         {{end}}
@@ -77,7 +78,7 @@
                         </a>
                     {{end}}
                 {{else}}
-                    <h1 class="errSearch">No results for your search...</h1>
+                    <h1 class="errSearch">{{index .Language.CurrentLang 4}}</h1>
                 {{end}}
             </section>
         </main>
