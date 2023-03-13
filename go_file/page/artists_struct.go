@@ -18,6 +18,7 @@ type Artists struct {
 	ConcertDates Dates
 	Relations    Relation
 }
+
 type Language struct {
 	En          []string
 	Fr          []string
@@ -25,21 +26,25 @@ type Language struct {
 	Ge          []string
 	CurrentLang []string
 }
+
 type Base struct {
 	Nbr      int
 	Data     []Artists
 	Show     []Artists
 	Language Language
 }
+
 type Relation struct {
 	ID       int64               `json:"id"`
 	Relation map[string][]string `json:"datesLocations"`
 }
+
 type Locations struct {
 	ID        int64    `json:"id"`
 	Locations []string `json:"locations"`
 	Dates     string   `json:"dates"`
 }
+
 type Dates struct {
 	ID    int64    `json:"id"`
 	Dates []string `json:"dates"`
@@ -61,7 +66,9 @@ func GetApi(url string, target interface{}) {
 		}
 	}
 }
+
 func Variable() {
+
 	bdd.Language.En = []string{"Home", "Research", "Language", "send",
 		"No results for your search...", "Group, member, location, concert date",
 		"Since", "First album on", "Members", "Concerts", "Map", "Suggestions"}
@@ -74,7 +81,9 @@ func Variable() {
 	bdd.Language.Ge = []string{"Heimat", "Forschung", "Sprache", "senden",
 		"Keine Ergebnisse für Ihre Suche...", "Group, member, location, concert date",
 		"Seit", "Erstes Album auf", "Mitglieder", "Konzerte", "Karte", "Vorschläge"}
+
 	bdd.Language.CurrentLang = bdd.Language.En
+
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
 	for i := 0; i < len(bdd.Data); i++ {
@@ -82,6 +91,7 @@ func Variable() {
 		GetApi("https://groupietrackers.herokuapp.com/api/dates/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].ConcertDates)
 		GetApi("https://groupietrackers.herokuapp.com/api/relation/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Relations)
 	}
+
 	for i := 0; i < len(bdd.Data); i++ {
 		artist := bdd.Data[i]
 		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
