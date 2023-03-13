@@ -11,7 +11,7 @@
     <body>
         <div class="language">
             <img class="glass" src="http://localhost:8080/static/image/globe.png" alt="globe logo">
-            <h1 class="h1Search">Language</h1>
+            <h1 class="h1Search">{{index .Language.CurrentLang 2}}</h1>
             <form method="post" class="menu">
                 <label>
                     <select name="language">
@@ -27,7 +27,7 @@
         <a href="/research">
             <div class="divSearch">
                 <img class="glass" src="http://localhost:8080/static/image/research.png" alt="research logo">
-                <h1 class="h1Search">Research</h1>
+                <h1 class="h1Search">{{index .Language.CurrentLang 1}}</h1>
             </div>
         </a>
 

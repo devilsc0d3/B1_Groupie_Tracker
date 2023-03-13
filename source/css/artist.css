@@ -66,6 +66,16 @@ span{
     margin-top: 25px;
 }
 
+.divBehavior {
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+.scrollBehavior {
+    width: 35px;
+    height: 35px;
+}
+
 .img{
     width: 300px;
     height: 300px;
@@ -89,6 +99,7 @@ span{
 
 ::-webkit-scrollbar-thumb {
     background: #ffff;
+    border-radius: 75px;
 }
 
 html {
