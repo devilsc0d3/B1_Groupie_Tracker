@@ -99,6 +99,7 @@ span{
 
 ::-webkit-scrollbar-thumb {
     background: #ffff;
+    border-radius: 75px;
 }
 
 html {
