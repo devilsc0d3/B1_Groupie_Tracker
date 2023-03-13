@@ -1,6 +1,7 @@
 package page
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -50,7 +51,7 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-
+	//lang
 	if r.FormValue("language") == "en" {
 		bdd.Language.CurrentLang = bdd.Language.En
 	} else if r.FormValue("language") == "fr" {
@@ -61,10 +62,54 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 		bdd.Language.CurrentLang = bdd.Language.Ge
 	}
 
+	//filters
+	var listeu []int
+	if r.FormValue("checkbox1") == "on" {
+		listeu = append(listeu, 1)
+	}
+	if r.FormValue("checkbox2") == "on" {
+		listeu = append(listeu, 2)
+	}
+	if r.FormValue("checkbox3") == "on" {
+		fmt.Println("Checkbox 3 selected")
+	}
+	if r.FormValue("checkbox4") == "on" {
+		fmt.Println("Checkbox 4 selected")
+	}
+	if r.FormValue("checkbox5") == "on" {
+		fmt.Println("Checkbox 5 selected")
+	}
+	if r.FormValue("checkbox6") == "on" {
+		fmt.Println("Checkbox 6 selected")
+	}
+	if r.FormValue("checkbox7") == "on" {
+		listeu = append(listeu, 7)
+	}
+	if r.FormValue("checkbox8") == "on" {
+		listeu = append(listeu, 8)
+	}
+	if len(listeu) == 0 {
+		listeu = []int{1, 2, 3, 4, 5, 6, 7, 8}
+	}
+	filters(listeu)
+
 	err := page.ExecuteTemplate(w, "research.html", bdd)
 	if err != nil {
 		return
 	}
+}
+
+func filters(nbr []int) {
+	var temp []Artists
+	for _, s := range bdd.Show {
+		for _, n := range nbr {
+			if len(s.Members) == n {
+				temp = append(temp, s)
+				break
+			}
+		}
+	}
+	bdd.Show = temp
 }
 
 func ToLower(s string) string {

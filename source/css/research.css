@@ -28,6 +28,17 @@ input[type="text"]{
     z-index: 999;
 }
 
+
+.filters {
+    margin-top: 30vh;
+    height: 200px;
+    background-color: rgb(29,29,56);
+    text-align: center;
+    color: #ffff;
+    font-family: "Comic Sans MS", serif;
+    font-size: 30px;
+}
+
 ::placeholder{
     color: white;
     font-size: 30px;
