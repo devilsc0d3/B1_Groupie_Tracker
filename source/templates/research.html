@@ -16,7 +16,7 @@
             <a href="/" class="underlineEffect">
                 <div class="divHome">
                     <img src="http://localhost:8080/static/image/home.png" class="imgHome" alt="home logo">
-                    <h1 class="h1Home">{{index .Language.CurrentLang 1}}</h1>
+                    <h1 class="h1Home">{{index .Language.CurrentLang 0}}</h1>
                 </div>
             </a>
 
@@ -49,6 +49,7 @@
                 <label>
                     <input type="text" name="search" placeholder="{{index .Language.CurrentLang 5}}" list="suggestions" maxlength="64">
                 </label>
+
                 <!--   TODO DATES SANS *-->
                 <datalist id="suggestions">
                     {{range .Data}}

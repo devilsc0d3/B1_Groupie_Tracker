@@ -21,12 +21,7 @@ a{
 
 .title{
     position: center;
-    margin-top: 36vh;
-    font-size: 150px;
-    font-family: Disney, serif;
-    font-weight: 550;
-    letter-spacing : 5px;
-    color: white;
+    margin-top: 20vh;
 }
 
 .sectionTitle{
@@ -61,7 +56,6 @@ a{
     width: 250px;
     height: 325px;
 }
-
 
 .barrette{
     z-index: 2;
