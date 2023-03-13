@@ -99,6 +99,7 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// TODO : same input & function refactor
 func filters(nbr []int) {
 	var temp []Artists
 	for _, s := range bdd.Show {
