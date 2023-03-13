@@ -8,8 +8,6 @@ import (
 
 func SearchPage(w http.ResponseWriter, r *http.Request) {
 	page, _ := template.ParseFiles("./source/templates/research.html")
-
-	// TODO : check case
 	if r.FormValue("search") != "" {
 		if r.FormValue("search") == "all" {
 			bdd.Show = bdd.Show[:0]
@@ -51,6 +49,16 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 		}
+	}
+
+	if r.FormValue("language") == "en" {
+		bdd.Language.CurrentLang = bdd.Language.En
+	} else if r.FormValue("language") == "fr" {
+		bdd.Language.CurrentLang = bdd.Language.Fr
+	} else if r.FormValue("language") == "es" {
+		bdd.Language.CurrentLang = bdd.Language.Es
+	} else if r.FormValue("language") == "ge" {
+		bdd.Language.CurrentLang = bdd.Language.Ge
 	}
 
 	err := page.ExecuteTemplate(w, "research.html", bdd)
