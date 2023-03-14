@@ -3,7 +3,13 @@
     <head>
         <link rel="stylesheet" href="http://localhost:8080/static/css/artist.css">
         <link rel="stylesheet" href="http://localhost:8080/static/css/header.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/slider.css">
         <link rel="stylesheet" href="http://localhost:8080/static/css/footer.css">
+
+        <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
+
+
         <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
         <meta charset="UTF-8">
         <title>Artist</title>
@@ -11,7 +17,7 @@
 
 <body>
     <header>
-        <h1 class="title"> MusicMinder+ </h1>
+        <img src="http://localhost:8080/static/image/logo.png" class="title" alt="logo">
         <a href="/" class="underlineEffect">
             <div class="divHome">
                 <img src="http://localhost:8080/static/image/home.png" class="imgHome" alt="home icon">
@@ -81,12 +87,51 @@
                 <p> {{$location}}  : {{range $date}} <span>{{.}}</span> {{end}} </p>
                 <br>
             {{end}}
-        <h1 class="proposition" id="map">Map :</h1>
+
+
+        <h1 class="proposition" id="maps">Map :</h1>
+
+        <div id="map" style="width:800px;height:500px;text-align: center; margin: 50px auto; border-radius: 5px"></div>
+        <script>
+            var map = new ol.Map({
+                target: 'map',
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([-87.6298, 41.8781]),
+                    zoom: 10
+                })
+            });
+            var marker = new ol.Feature({
+                geometry: new ol.geom.Point(
+                    ol.proj.fromLonLat([-87.6298, 41.8781])
+                )
+            });
+            var markerVectorLayer = new ol.layer.Vector({
+                source: new ol.source.Vector({
+                    features: [marker]
+                }),
+                style: new ol.style.Style({
+                    image: new ol.style.Icon({
+                        anchor: [0.5, 1],
+                        src: 'https://openlayers.org/en/latest/examples/data/icon.png'
+                    })
+                })
+            });
+            map.addLayer(markerVectorLayer);
+        </script>
         <h1 class="proposition" id="suggestion">Suggestion :</h1>
+
+
     </section>
 
+
+
     <footer>
-        <h1 class="title_footer"> MusicMinder+ </h1>
+        <img src="http://localhost:8080/static/image/logo.png" class="titleBottom" alt="logo"> <br>
         <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
         <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
         <p class="credit">Cenac Lucille - Fauré Léo</p>

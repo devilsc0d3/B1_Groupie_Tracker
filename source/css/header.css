@@ -14,12 +14,8 @@ header{
 }
 
 .title {
-    color: white;
-    font-size: 20px;
-    font-family: Disney, serif;
+    width: 140px;
     margin-left: 20px;
-    letter-spacing : 3px;
-    font-weight: 550;
 }
 
 .imgHome{

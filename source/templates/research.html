@@ -11,7 +11,7 @@
 
     <body>
         <header>
-            <h1 class="title"> MusicMinder+ </h1>
+            <img src="http://localhost:8080/static/image/logo.png" class="title" alt="logo">
 
             <a href="/" class="underlineEffect">
                 <div class="divHome">
@@ -55,9 +55,9 @@
                     {{range .Data}}
                         <option value="{{.Name}}">{{.Name}} - group</option>
                         <option value="{{.CreationDate}}">{{.CreationDate}} - CreationDate</option>
-                        {{range .Members}}
-                            <option value="{{.}}">{{.}} - members</option>
-                        {{end}}
+                    {{range .Members}}
+                    <option value="{{.}}">{{.}} - members</option>
+                    {{end}}
                         {{range .Locations.Locations}}
                             <option value="{{.}}">{{.}} - locations</option>
                         {{end}}
@@ -108,7 +108,7 @@
         </main>
 
         <footer>
-            <h1 class="title"> MusicMinder+ </h1>
+            <img src="http://localhost:8080/static/image/logo.png" class="titleBottom" alt="logo"> <br>
             <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
             <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
             <p class="credit">Cenac Lucille - Fauré Léo</p>
