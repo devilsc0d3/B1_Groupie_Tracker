@@ -37,10 +37,12 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 
-				//dates
-				for j := 0; j < len(bdd.Data[i].ConcertDates.Dates); j++ {
-					if bdd.Data[i].ConcertDates.Dates[j] == r.FormValue("search") {
-						bdd.Show = append(bdd.Show, bdd.Data[i])
+				//relation(dates)
+				for _, v := range bdd.Data[i].Relations.Relation {
+					for j := 0; j < len(v); j++ {
+						if v[j] == r.FormValue("search") {
+							bdd.Show = append(bdd.Show, bdd.Data[i])
+						}
 					}
 				}
 
@@ -80,7 +82,7 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Checkbox 5 selected")
 	}
 	if r.FormValue("checkbox6") == "on" {
-		fmt.Println("Checkbox 6 selected")
+		listeu = append(listeu, 6)
 	}
 	if r.FormValue("checkbox7") == "on" {
 		listeu = append(listeu, 7)

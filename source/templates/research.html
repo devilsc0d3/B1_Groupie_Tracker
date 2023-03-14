@@ -58,12 +58,11 @@
                         {{range .Members}}
                             <option value="{{.}}">{{.}} - members</option>
                         {{end}}
-
                         {{range .Locations.Locations}}
-                    <option value="{{.}}">{{.}} - locations</option>
+                            <option value="{{.}}">{{.}} - locations</option>
                         {{end}}
-                        {{range .ConcertDates.Dates}}
-                    <option value="{{.}}">{{.}} - dates</option>
+                    {{range $key, $value := .Relations.Relation}}
+                          {{range $value}}  <option value="{{.}}">{{.}} - dates</option> {{end}}
                         {{end}}
                     {{end}}
                 </datalist>
