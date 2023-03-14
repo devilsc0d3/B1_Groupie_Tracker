@@ -2,7 +2,7 @@ footer {
     background-color: #001126;
     text-align: center;
     align-items: center;
-    height: 11vh;
+    height: 120px;
 }
 
 .credit {
@@ -17,8 +17,12 @@ footer {
     color: white;
     font-size: 20px;
     font-family: Disney, serif;
-    letter-spacing : 2.5px;
+    letter-spacing : 3px;
     font-weight: 550;
+}
+
+.titleBottom {
+    width: 80px;
 }
 
 @font-face {
