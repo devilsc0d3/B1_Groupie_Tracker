@@ -3,6 +3,8 @@
     <head>
         <link rel="stylesheet" href="http://localhost:8080/static/css/home.css">
         <link rel="stylesheet" href="http://localhost:8080/static/css/footer.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/slider.css">
+
         <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
         <meta charset="UTF-8">
         <title>MM+</title>
@@ -50,6 +52,23 @@
                 </a>
             {{end}}
         </section>
+
+        <section class="product">
+            <button class="pre-btn"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
+
+            <div class="product-container">
+                {{range .Data}}
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{.Image}}" class="product-thumb" alt="">
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        </section>
+
+        <script src="http://localhost:8080/static/js/script.js"></script>
 
         <footer>
             <h1 class="title_footer"> MusicMinder+ </h1>

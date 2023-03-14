@@ -18,3 +18,11 @@ func Error(w http.ResponseWriter, _ *http.Request) {
 func RandomInt() int {
 	return rand.Intn(11)
 }
+
+func Test(w http.ResponseWriter, _ *http.Request) {
+	page, _ := template.ParseFiles("./source/templates/index.html")
+	err := page.ExecuteTemplate(w, "index.html", bdd)
+	if err != nil {
+		return
+	}
+}
