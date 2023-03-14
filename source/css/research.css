@@ -30,8 +30,8 @@ input[type="text"]{
 
 
 .filters {
-    margin-top: 30vh;
-    height: 200px;
+    margin-top: 25vh;
+    height: 50px;
     background-color: rgb(29,29,56);
     text-align: center;
     color: #ffff;
@@ -55,7 +55,8 @@ input[type="text"]{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-top: 25vh;
+    /*margin-top: 25vh;*/
+    margin-top: 50px;
 }
 
 .divImage{
