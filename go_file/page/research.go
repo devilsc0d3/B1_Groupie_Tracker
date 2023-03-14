@@ -1,7 +1,6 @@
 package page
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -71,16 +70,16 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 		listeu = append(listeu, 2)
 	}
 	if r.FormValue("checkbox3") == "on" {
-		fmt.Println("Checkbox 3 selected")
+		listeu = append(listeu, 3)
 	}
 	if r.FormValue("checkbox4") == "on" {
-		fmt.Println("Checkbox 4 selected")
+		listeu = append(listeu, 4)
 	}
 	if r.FormValue("checkbox5") == "on" {
-		fmt.Println("Checkbox 5 selected")
+		listeu = append(listeu, 5)
 	}
 	if r.FormValue("checkbox6") == "on" {
-		fmt.Println("Checkbox 6 selected")
+		listeu = append(listeu, 6)
 	}
 	if r.FormValue("checkbox7") == "on" {
 		listeu = append(listeu, 7)

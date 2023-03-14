@@ -14,6 +14,7 @@ func main() {
 
 	page.Variable()
 
+	http.HandleFunc("/test", page.Test)
 	http.HandleFunc("/", page.HomePage)
 	http.HandleFunc("/404", page.Error)
 
