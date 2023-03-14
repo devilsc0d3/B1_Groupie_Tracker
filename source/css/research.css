@@ -14,30 +14,6 @@ a{
     text-decoration : none;
 }
 
-input[type="text"]{
-    border: none;
-    width: 100%;
-    height: 12.5vh;
-    background-color: #4b4d5b;
-    background-image: linear-gradient(to bottom, #30323b, transparent);
-    margin-top: 11vh;
-    position: fixed;
-    font-size: 30px;
-    color: white;
-    text-indent: 100px;
-    z-index: 999;
-}
-
-
-.filters {
-    margin-top: 25vh;
-    height: 50px;
-    background-color: rgb(29,29,56);
-    text-align: center;
-    color: #ffff;
-    font-family: "Comic Sans MS", serif;
-    font-size: 30px;
-}
 
 ::placeholder{
     color: white;
@@ -55,8 +31,8 @@ input[type="text"]{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    /*margin-top: 25vh;*/
-    margin-top: 50px;
+    /*margin-top: 35vh;*/
+    margin-top: calc(32vh + 100px);
 }
 
 .divImage{

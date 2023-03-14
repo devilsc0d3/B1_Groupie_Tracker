@@ -1,16 +1,20 @@
-header{
+header {
     top: 0;
     left: 0;
     width: 100%;
+    position: fixed;
+    z-index: 999;
+}
+
+.top{
+    width: 100%;
     height: 11vh;
-    min-height: 50px;
+    min-height: 100px;
     background-color: #001126;
     align-items: center;
     margin: 0;
     justify-content: space-between;
     display: flex;
-    position: fixed;
-    z-index: 999;
 }
 
 .title {
@@ -84,6 +88,29 @@ input[type="submit"] {
     border: none;
     color: #ffff;
     font-size: 20px;
+}
+
+
+input[type="text"]{
+    border: none;
+    width: 100%;
+    height: 12.5vh;
+    margin: 0;
+    background-color: #4b4d5b;
+    background-image: linear-gradient(to bottom, #30323b, transparent);
+    font-size: 30px;
+    color: white;
+    text-indent: 100px;
+    z-index: 999;
+}
+
+.filters {
+    height: 50px;
+    background-color: rgb(29,29,56);
+    text-align: center;
+    color: #ffff;
+    font-family: "Comic Sans MS", serif;
+    font-size: 30px;
 }
 
 .menu {

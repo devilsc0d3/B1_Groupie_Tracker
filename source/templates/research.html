@@ -11,6 +11,7 @@
 
     <body>
         <header>
+            <div class="top">
             <img src="http://localhost:8080/static/image/logo.png" class="title" alt="logo">
 
             <a href="/" class="underlineEffect">
@@ -42,55 +43,56 @@
                     <input type="submit" value="{{index .Language.CurrentLang 3}}" class="but">
                 </form>
             </div>
-        </header>
 
-        <main>
+            </div>
+
+
             <form method="post">
                 <label>
                     <input type="text" name="search" placeholder="{{index .Language.CurrentLang 5}}" list="suggestions" maxlength="64" autofocus>
                 </label>
-
-                <!--   TODO DATES SANS *-->
                 <datalist id="suggestions">
                     {{range .Data}}
-                        <option value="{{.Name}}">{{.Name}} - group</option>
-                        <option value="{{.CreationDate}}">{{.CreationDate}} - CreationDate</option>
+                    <option value="{{.Name}}">{{.Name}} - group</option>
+                    <option value="{{.CreationDate}}">{{.CreationDate}} - CreationDate</option>
                     {{range .Members}}
                     <option value="{{.}}">{{.}} - members</option>
                     {{end}}
-                        {{range .Locations.Locations}}
-                            <option value="{{.}}">{{.}} - locations</option>
-                        {{end}}
+                    {{range .Locations.Locations}}
+                    <option value="{{.}}">{{.}} - locations</option>
+                    {{end}}
                     {{range $key, $value := .Relations.Relation}}
-                          {{range $value}}  <option value="{{.}}">{{.}} - dates</option> {{end}}
-                        {{end}}
+                    {{range $value}}  <option value="{{.}}">{{.}} - dates</option> {{end}}
+                    {{end}}
                     {{end}}
                 </datalist>
-            </form>
 
-            <form method="post" class="filters">
-                <input type="checkbox" value="on" name="rangeCheck">
-                <input type="range" min="1950" max="2023" id="range" name="range">
-                <span id="rangeValue"></span>
-                <input type="checkbox" id="1" name="checkbox1" value="on">
-                <label for="1">1</label>
-                <input type="checkbox" id="2" name="checkbox2" value="on">
-                <label for="2">2</label>
-                <input type="checkbox" id="3" name="checkbox3" value="on">
-                <label for="3">3</label>
-                <input type="checkbox" id="4" name="checkbox4" value="on">
-                <label for="4">4</label>
-                <input type="checkbox" id="5" name="checkbox5" value="on">
-                <label for="5">5</label>
-                <input type="checkbox" id="6" name="checkbox6" value="on">
-                <label for="6">6</label>
-                <input type="checkbox" id="7" name="checkbox7" value="on">
-                <label for="7">7</label>
-                <input type="checkbox" id="8" name="checkbox8" value="on">
-                <label for="8">8</label>
-                <input type="submit" value="Submit">
+                <div class="filters">
+                    <input type="checkbox" value="on" name="rangeCheck">
+                    <input type="range" min="1950" max="2023" id="range" name="range">
+                    <span id="rangeValue"></span>
+                    <input type="checkbox" id="1" name="checkbox1" value="on">
+                    <label for="1">1</label>
+                    <input type="checkbox" id="2" name="checkbox2" value="on">
+                    <label for="2">2</label>
+                    <input type="checkbox" id="3" name="checkbox3" value="on">
+                    <label for="3">3</label>
+                    <input type="checkbox" id="4" name="checkbox4" value="on">
+                    <label for="4">4</label>
+                    <input type="checkbox" id="5" name="checkbox5" value="on">
+                    <label for="5">5</label>
+                    <input type="checkbox" id="6" name="checkbox6" value="on">
+                    <label for="6">6</label>
+                    <input type="checkbox" id="7" name="checkbox7" value="on">
+                    <label for="7">7</label>
+                    <input type="checkbox" id="8" name="checkbox8" value="on">
+                    <label for="8">8</label>
+                    <input type="submit" value="Submit">
+                </div>
             </form>
+        </header>
 
+        <main>
             <section class="sectionImage">
                 {{if len .Show}}
                     {{range .Show}}
