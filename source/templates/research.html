@@ -47,7 +47,7 @@
         <main>
             <form method="post">
                 <label>
-                    <input type="text" name="search" placeholder="{{index .Language.CurrentLang 5}}" list="suggestions" maxlength="64">
+                    <input type="text" name="search" placeholder="{{index .Language.CurrentLang 5}}" list="suggestions" maxlength="64" autofocus>
                 </label>
 
                 <!--   TODO DATES SANS *-->
@@ -69,6 +69,9 @@
             </form>
 
             <form method="post" class="filters">
+                <input type="checkbox" value="on" name="rangeCheck">
+                <input type="range" min="1950" max="2015" id="range" name="range">
+                <span id="rangeValue"></span>
                 <input type="checkbox" id="1" name="checkbox1" value="on">
                 <label for="1">1</label>
                 <input type="checkbox" id="2" name="checkbox2" value="on">
@@ -83,7 +86,7 @@
                 <label for="6">6</label>
                 <input type="checkbox" id="7" name="checkbox7" value="on">
                 <label for="7">7</label>
-                <input type="checkbox" id="8" name="checkbox7" value="on">
+                <input type="checkbox" id="8" name="checkbox8" value="on">
                 <label for="8">8</label>
                 <input type="submit" value="Submit">
             </form>
@@ -110,5 +113,13 @@
             <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
             <p class="credit">Cenac Lucille - Fauré Léo</p>
         </footer>
+        <script>
+        var range = document.getElementById("range");
+        var rangeValue = document.getElementById("rangeValue");
+        rangeValue.innerHTML = range.value;
+        range.oninput = function() {
+        rangeValue.innerHTML = this.value;
+        }
+        </script>
     </body>
 </html>

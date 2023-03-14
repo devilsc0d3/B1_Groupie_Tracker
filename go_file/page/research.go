@@ -64,6 +64,7 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//filters
+	//checkbox
 	var listeu []int
 	if r.FormValue("checkbox1") == "on" {
 		listeu = append(listeu, 1)
@@ -94,10 +95,26 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 	}
 	filters(listeu)
 
+	//range
+	if r.FormValue("rangeCheck") == "on" {
+		filterRange(r)
+	}
+
 	err := page.ExecuteTemplate(w, "research.html", bdd)
 	if err != nil {
 		return
 	}
+
+}
+
+func filterRange(r *http.Request) {
+	var temp []Artists
+	for i := 0; i < len(bdd.Show); i++ {
+		if strconv.FormatInt(bdd.Show[i].CreationDate, 10) == r.FormValue("range") {
+			temp = append(temp, bdd.Show[i])
+		}
+	}
+	bdd.Show = temp
 }
 
 // TODO : same input & function refactor

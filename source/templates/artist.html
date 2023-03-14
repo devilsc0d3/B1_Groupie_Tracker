@@ -77,8 +77,8 @@
             {{end}}
         </p>
         <h1 class="proposition" id="concert">Concert :</h1>
-            {{range $key, $value := .Relations.Relation}}
-                <p> {{$key}}  : {{range $value}} <span>{{.}}</span> {{end}} </p>
+            {{range $location, $date := .Relations.Relation}}
+                <p> {{$location}}  : {{range $date}} <span>{{.}}</span> {{end}} </p>
                 <br>
             {{end}}
         <h1 class="proposition" id="map">Map :</h1>
