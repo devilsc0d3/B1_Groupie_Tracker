@@ -8,47 +8,45 @@ import (
 
 func SearchPage(w http.ResponseWriter, r *http.Request) {
 	page, _ := template.ParseFiles("./source/templates/research.html")
-	if r.FormValue("search") != "" {
-		if r.FormValue("search") == "all" {
-			bdd.Show = bdd.Show[:0]
-			for i := 0; i < len(bdd.Data); i++ {
+	if r.FormValue("search") == "" {
+		bdd.Show = bdd.Show[:0]
+		for i := 0; i < len(bdd.Data); i++ {
+			bdd.Show = append(bdd.Show, bdd.Data[i])
+		}
+	} else {
+		bdd.Show = bdd.Show[0:0]
+		for i := 0; i < 52; i++ {
+			// name
+			if ToLower(bdd.Data[i].Name) == ToLower(r.FormValue("search")) {
 				bdd.Show = append(bdd.Show, bdd.Data[i])
 			}
-		} else {
-			bdd.Show = bdd.Show[0:0]
-			for i := 0; i < 52; i++ {
-				// name
-				if ToLower(bdd.Data[i].Name) == ToLower(r.FormValue("search")) {
+
+			// members
+			for j := 0; j < len(bdd.Data[i].Members); j++ {
+				if ToLower(bdd.Data[i].Members[j]) == ToLower(r.FormValue("search")) {
 					bdd.Show = append(bdd.Show, bdd.Data[i])
 				}
+			}
 
-				// members
-				for j := 0; j < len(bdd.Data[i].Members); j++ {
-					if ToLower(bdd.Data[i].Members[j]) == ToLower(r.FormValue("search")) {
+			//locations
+			for j := 0; j < len(bdd.Data[i].Locations.Locations); j++ {
+				if ToLower(bdd.Data[i].Locations.Locations[j]) == ToLower(r.FormValue("search")) {
+					bdd.Show = append(bdd.Show, bdd.Data[i])
+				}
+			}
+
+			//relation(dates)
+			for _, v := range bdd.Data[i].Relations.Relation {
+				for j := 0; j < len(v); j++ {
+					if v[j] == r.FormValue("search") {
 						bdd.Show = append(bdd.Show, bdd.Data[i])
 					}
 				}
+			}
 
-				//locations
-				for j := 0; j < len(bdd.Data[i].Locations.Locations); j++ {
-					if ToLower(bdd.Data[i].Locations.Locations[j]) == ToLower(r.FormValue("search")) {
-						bdd.Show = append(bdd.Show, bdd.Data[i])
-					}
-				}
-
-				//relation(dates)
-				for _, v := range bdd.Data[i].Relations.Relation {
-					for j := 0; j < len(v); j++ {
-						if v[j] == r.FormValue("search") {
-							bdd.Show = append(bdd.Show, bdd.Data[i])
-						}
-					}
-				}
-
-				//creation dates
-				if strconv.FormatInt(bdd.Data[i].CreationDate, 10) == r.FormValue("search") {
-					bdd.Show = append(bdd.Show, bdd.Data[i])
-				}
+			//creation dates
+			if strconv.FormatInt(bdd.Data[i].CreationDate, 10) == r.FormValue("search") {
+				bdd.Show = append(bdd.Show, bdd.Data[i])
 			}
 		}
 	}

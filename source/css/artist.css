@@ -20,6 +20,7 @@ span{
     border-radius: 10px;
     padding: 8px;
     line-height: 3;
+    white-space: nowrap;
 }
 
 .name {

@@ -7,7 +7,7 @@ body{
 
 main {
     flex-grow: 1;
-    min-height: 89vh
+    min-height: calc(100vh - 120px)
 }
 
 a{
@@ -61,8 +61,8 @@ input[type="text"]{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    /*margin-top: 25vh;*/
-    margin-top: 50px;
+    /*margin-top: 35vh;*/
+    margin-top: calc(32vh + 100px);
 }
 
 .divImage{

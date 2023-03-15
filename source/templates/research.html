@@ -11,7 +11,8 @@
 
     <body>
         <header>
-            <h1 class="title"> MusicMinder+ </h1>
+            <div class="top">
+            <img src="http://localhost:8080/static/image/logo.png" class="title" alt="logo">
 
             <a href="/" class="underlineEffect">
                 <div class="divHome">
@@ -42,33 +43,31 @@
                     <input type="submit" value="{{index .Language.CurrentLang 3}}" class="but">
                 </form>
             </div>
-        </header>
 
-        <main>
+            </div>
+
+
             <form method="post">
                 <label>
                     <input type="text" name="search" placeholder="{{index .Language.CurrentLang 5}}" list="suggestions" maxlength="64" autofocus>
                 </label>
-
-                <!--   TODO DATES SANS *-->
                 <datalist id="suggestions">
                     {{range .Data}}
-                        <option value="{{.Name}}">{{.Name}} - group</option>
-                        <option value="{{.CreationDate}}">{{.CreationDate}} - CreationDate</option>
-                        {{range .Members}}
-                            <option value="{{.}}">{{.}} - members</option>
-                        {{end}}
-                        {{range .Locations.Locations}}
-                            <option value="{{.}}">{{.}} - locations</option>
-                        {{end}}
+                    <option value="{{.Name}}">{{.Name}} - group</option>
+                    <option value="{{.CreationDate}}">{{.CreationDate}} - CreationDate</option>
+                    {{range .Members}}
+                    <option value="{{.}}">{{.}} - members</option>
+                    {{end}}
+                    {{range .Locations.Locations}}
+                    <option value="{{.}}">{{.}} - locations</option>
+                    {{end}}
                     {{range $key, $value := .Relations.Relation}}
-                          {{range $value}}  <option value="{{.}}">{{.}} - dates</option> {{end}}
-                        {{end}}
+                    {{range $value}}  <option value="{{.}}">{{.}} - dates</option> {{end}}
+                    {{end}}
                     {{end}}
                 </datalist>
-            </form>
 
-            <form method="post" class="filters">
+            <div class="filters">
                 <h1 class="wordFilters">Creation date : </h1>
                 <input type="checkbox" value="on" name="rangeCheck">
                 <input type="range" min="1950" max="2023" id="range" name="range">
@@ -91,8 +90,11 @@
                 <input type="checkbox" id="8" name="checkbox8" value="on">
                 <label for="8">8</label>
                 <input type="submit" value="Submit" class="submit">
+            </div>
             </form>
+        </header>
 
+        <main>
             <section class="sectionImage">
                 {{if len .Show}}
                     {{range .Show}}
@@ -110,7 +112,7 @@
         </main>
 
         <footer>
-            <h1 class="title"> MusicMinder+ </h1>
+            <img src="http://localhost:8080/static/image/logo.png" class="titleBottom" alt="logo"> <br>
             <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
             <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
             <p class="credit">Cenac Lucille - Fauré Léo</p>
