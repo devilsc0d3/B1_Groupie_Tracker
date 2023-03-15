@@ -73,13 +73,13 @@ func Variable() {
 		"No results for your search...", "Group, member, location, concert date",
 		"Since", "First album on", "Members", "Concerts", "Map", "Suggestions"}
 	bdd.Language.Fr = []string{"Accueil", "Recherche", "Langue", "envoyer",
-		"Aucun résultat pour votre recherche...", "Group, member, location, concert date",
+		"Aucun résultat pour votre recherche...", "Groupe, membre, lieu, date de concert",
 		"Depuis", "Premier album le", "Membres", "Concerts", "Carte", "Suggestions"}
 	bdd.Language.Es = []string{"Inicio", "Búsqueda", "Idioma", "enviar",
-		"No hay resultados para su búsqueda...", "Group, member, location, concert date",
+		"No hay resultados para su búsqueda...", "Grupo, miembro, lugar, fecha del concierto",
 		"Desde", "Primer álbum el", "Miembros", "Conciertos", "Mapa", "Sugerencias"}
 	bdd.Language.Ge = []string{"Heimat", "Forschung", "Sprache", "senden",
-		"Keine Ergebnisse für Ihre Suche...", "Group, member, location, concert date",
+		"Keine Ergebnisse für Ihre Suche...", "Gruppe, Mitglied, Ort, Konzertdatum",
 		"Seit", "Erstes Album auf", "Mitglieder", "Konzerte", "Karte", "Vorschläge"}
 
 	bdd.Language.CurrentLang = bdd.Language.En
