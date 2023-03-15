@@ -6,7 +6,7 @@ import (
 )
 
 func ArtistPage(w http.ResponseWriter, r *http.Request, data interface{}) {
-	page, _ := template.ParseFiles("./source/templates/artist.html")
+	page, _ := template.ParseFiles("../source/templates/artist.html")
 	if r.FormValue("language") != "" {
 		if r.FormValue("language") == "en" {
 			bdd.Language.CurrentLang = bdd.Language.En

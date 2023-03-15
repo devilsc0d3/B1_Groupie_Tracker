@@ -7,7 +7,7 @@ import (
 )
 
 func SearchPage(w http.ResponseWriter, r *http.Request) {
-	page, _ := template.ParseFiles("./source/templates/research.html")
+	page, _ := template.ParseFiles("../source/templates/research.html")
 	if r.FormValue("search") == "" {
 		bdd.Show = bdd.Show[:0]
 		for i := 0; i < len(bdd.Data); i++ {

@@ -9,7 +9,7 @@ import (
 const port = ":8080"
 
 func main() {
-	fs := http.FileServer(http.Dir("source/"))
+	fs := http.FileServer(http.Dir("../source/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	page.Variable()
