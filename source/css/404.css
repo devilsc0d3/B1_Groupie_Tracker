@@ -46,6 +46,7 @@ a {
 
 ::-webkit-scrollbar-thumb {
     background: #ffff;
+    border-radius: 75px;
 }
 
 @font-face {
