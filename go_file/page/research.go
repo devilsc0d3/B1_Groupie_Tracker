@@ -94,8 +94,13 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 	filters(listeu)
 
 	//range
-	if r.FormValue("rangeCheck") == "on" {
-		filterRange(r)
+	//creation date
+	if r.FormValue("creationDCheck") == "on" {
+		filterRangeCD(r)
+	}
+	//first album
+	if r.FormValue("firstACheck") == "on" {
+		filterRangeFA(r)
 	}
 
 	err := page.ExecuteTemplate(w, "research.html", bdd)
@@ -105,10 +110,20 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func filterRange(r *http.Request) {
+func filterRangeCD(r *http.Request) {
 	var temp []Artists
 	for i := 0; i < len(bdd.Show); i++ {
 		if strconv.FormatInt(bdd.Show[i].CreationDate, 10) == r.FormValue("range") {
+			temp = append(temp, bdd.Show[i])
+		}
+	}
+	bdd.Show = temp
+}
+
+func filterRangeFA(r *http.Request) {
+	var temp []Artists
+	for i := 0; i < len(bdd.Show); i++ {
+		if bdd.Show[i].FirstAlbum == r.FormValue("range") {
 			temp = append(temp, bdd.Show[i])
 		}
 	}

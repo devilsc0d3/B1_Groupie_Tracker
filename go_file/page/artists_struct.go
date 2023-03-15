@@ -70,16 +70,16 @@ func GetApi(url string, target interface{}) {
 func Variable() {
 
 	bdd.Language.En = []string{"Home", "Research", "Language", "send",
-		"No results for your search...", "Group, member, location, concert date",
+		"Group", "Creation date", "Location", "Dates", "No results for your search...", "Group, member, location, concert date", "Number of members", "First album date",
 		"Since", "First album on", "Members", "Concerts", "Map", "Suggestions"}
 	bdd.Language.Fr = []string{"Accueil", "Recherche", "Langue", "envoyer",
-		"Aucun résultat pour votre recherche...", "Groupe, membre, lieu, date de concert",
+		"Groupe", "Date de création", "Lieu", "Dates", "Aucun résultat pour votre recherche...", "Groupe, membre, lieu, date de concert",
 		"Depuis", "Premier album le", "Membres", "Concerts", "Carte", "Suggestions"}
 	bdd.Language.Es = []string{"Inicio", "Búsqueda", "Idioma", "enviar",
-		"No hay resultados para su búsqueda...", "Grupo, miembro, lugar, fecha del concierto",
+		"Grupo", "Fecha de creación", "Ubicación", "Fechas", "No hay resultados para su búsqueda...", "Grupo, miembro, lugar, fecha del concierto",
 		"Desde", "Primer álbum el", "Miembros", "Conciertos", "Mapa", "Sugerencias"}
 	bdd.Language.Ge = []string{"Heimat", "Forschung", "Sprache", "senden",
-		"Keine Ergebnisse für Ihre Suche...", "Gruppe, Mitglied, Ort, Konzertdatum",
+		"Gruppe", "Erstellungsdatum", "Ort", "Daten", "Keine Ergebnisse für Ihre Suche...", "Gruppe, Mitglied, Ort, Konzertdatum",
 		"Seit", "Erstes Album auf", "Mitglieder", "Konzerte", "Karte", "Vorschläge"}
 
 	bdd.Language.CurrentLang = bdd.Language.En
