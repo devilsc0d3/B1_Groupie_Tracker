@@ -105,6 +105,8 @@ input[type="text"]{
 }
 
 .filters {
+    display: flex;
+    justify-content: center;
     height: 50px;
     background-color: rgb(29,29,56);
     text-align: center;
