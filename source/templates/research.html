@@ -45,8 +45,6 @@
             </div>
 
             </div>
-
-
             <form method="post">
                 <label>
                     <input type="text" name="search" placeholder="{{index .Language.CurrentLang 5}}" list="suggestions" maxlength="64" autofocus>
@@ -56,7 +54,7 @@
                     <option value="{{.Name}}">{{.Name}} - group</option>
                     <option value="{{.CreationDate}}">{{.CreationDate}} - CreationDate</option>
                     {{range .Members}}
-                    <option value="{{.}}">{{.}} - members</option>
+                    <option value="{{.}}">{{.}} - members </option>
                     {{end}}
                     {{range .Locations.Locations}}
                     <option value="{{.}}">{{.}} - locations</option>

@@ -53,12 +53,14 @@
             {{end}}
         </section>
 
+        {{range $key, $value := .DataGenre}}
         <section class="product">
+            <h1 class="subtitle">{{$key}}</h1>
             <button class="pre-btn"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
             <button class="nxt-btn"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
 
             <div class="product-container">
-                {{range .Data}}
+                {{range $value}}
                 <div class="product-card">
                     <div class="product-image">
                         <img src="{{.Image}}" class="product-thumb" alt="">
@@ -67,6 +69,8 @@
                 {{end}}
             </div>
         </section>
+        {{end}}
+
 
         <script src="http://localhost:8080/static/js/script.js"></script>
 

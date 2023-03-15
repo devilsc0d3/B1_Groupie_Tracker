@@ -17,6 +17,7 @@ type Artists struct {
 	Locations    Locations
 	ConcertDates Dates
 	Relations    Relation
+	Suggestion   []Artists
 }
 
 type Language struct {
@@ -28,10 +29,12 @@ type Language struct {
 }
 
 type Base struct {
-	Nbr      int
-	Data     []Artists
-	Show     []Artists
-	Language Language
+	Nbr       int
+	Data      []Artists
+	Show      []Artists
+	Language  Language
+	DataGenre map[string][]Artists
+	ShowGenre map[string][]Artists
 }
 
 type Relation struct {
@@ -92,6 +95,16 @@ func Variable() {
 		GetApi("https://groupietrackers.herokuapp.com/api/relation/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Relations)
 	}
 
+	//
+	bdd.Data[0].Suggestion = bdd.Data[1:10]
+	var gro = map[string][]Artists{}
+
+	gro["rock"] = bdd.Data[0:5]
+	gro["rockb"] = bdd.Data[6:20]
+	gro["rockc"] = bdd.Data[25:48]
+	TriGenre(gro)
+	//
+
 	for i := 0; i < len(bdd.Data); i++ {
 		artist := bdd.Data[i]
 		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
@@ -99,4 +112,15 @@ func Variable() {
 		})
 	}
 	http.HandleFunc("/research", SearchPage)
+}
+
+func TriGenre(array map[string][]Artists) {
+	temp := map[string][]Artists{}
+	for key, value := range array {
+		if len(value) > 10 {
+			temp[key] = value
+
+		}
+	}
+	bdd.DataGenre = temp
 }
