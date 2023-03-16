@@ -17,7 +17,7 @@ type Artists struct {
 	Locations    Locations
 	ConcertDates Dates
 	Relations    Relation
-	CurrentLang  []string
+	Language     Language
 }
 
 type Language struct {
@@ -95,6 +95,10 @@ func Variable() {
 		GetApi("https://groupietrackers.herokuapp.com/api/locations/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Locations)
 		GetApi("https://groupietrackers.herokuapp.com/api/dates/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].ConcertDates)
 		GetApi("https://groupietrackers.herokuapp.com/api/relation/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Relations)
+	}
+
+	for i := 0; i < 52; i++ {
+		bdd.Data[i].Language = bdd.Language
 	}
 
 	for i := 0; i < len(bdd.Data); i++ {

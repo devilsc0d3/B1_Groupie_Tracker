@@ -21,7 +21,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 			bdd.Language.CurrentLang = bdd.Language.Ge
 		}
 		for i := 0; i < 52; i++ {
-			bdd.Data[i].CurrentLang = bdd.Language.CurrentLang
+			bdd.Data[i].Language.CurrentLang = bdd.Language.CurrentLang
 		}
 	}
 
