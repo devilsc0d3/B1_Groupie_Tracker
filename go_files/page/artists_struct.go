@@ -30,6 +30,8 @@ func GetApi(url string, target interface{}) {
 	}
 }
 
+var ArrayGender [][]string
+
 func Variable() {
 
 	bdd.Language.En = []string{"Home", "Research", "Language", "send",
@@ -51,6 +53,7 @@ func Variable() {
 
 	bdd.Language.CurrentLang = bdd.Language.En
 	ReadFile()
+	ReadFileList()
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
 	for i := 0; i < len(bdd.Data); i++ {
@@ -61,8 +64,9 @@ func Variable() {
 
 	for i := 0; i < 52; i++ {
 		bdd.Data[i].Language = bdd.Language
-	}
+		bdd.Data[i].Gender = ArrayGender[i]
 
+	}
 	TriGenre(bdd.DataGenre)
 	//-----------------------------------//
 	//for i := 0; i < 52; i++ {
@@ -98,9 +102,9 @@ func TriGenre(array map[string][]structure.Artists) {
 	bdd.ShowGenre = temp
 }
 
-func write() {
-	b, _ := json.Marshal(groups)
-	save, _ := os.Create("save.txt")
+func write(file string) {
+	b, _ := json.Marshal(gender)
+	save, _ := os.Create(file)
 	_, err := save.Write(b)
 	if err != nil {
 		return
@@ -110,6 +114,15 @@ func write() {
 func ReadFile() {
 	content, _ := os.ReadFile("../save.txt")
 	err1 := json.Unmarshal(content, &bdd.DataGenre)
+	if err1 != nil {
+		fmt.Print(err1, "error")
+		return
+	}
+}
+
+func ReadFileList() {
+	content, _ := os.ReadFile("SaveGender.txt")
+	err1 := json.Unmarshal(content, &ArrayGender)
 	if err1 != nil {
 		fmt.Print(err1, "error")
 		return
@@ -139,6 +152,7 @@ func IsPresent(nums []int, num int) bool {
 }
 
 var groups = map[string][]structure.Artists{}
+var gender [][]string
 
 func Spotify(group string, i int) {
 	// create a config client for authenticator
@@ -166,6 +180,8 @@ func Spotify(group string, i int) {
 	if err != nil {
 		fmt.Print(err)
 	}
+
+	//gender = append(gender, fullArtist.Genres)
 
 	for _, category := range fullArtist.Genres {
 		groups[category] = append(groups[category], bdd.Data[i])

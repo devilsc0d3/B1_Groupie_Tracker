@@ -11,6 +11,7 @@ type Artists struct {
 	ConcertDates Dates
 	Relations    Relation
 	Language     Language
+	Gender       []string
 	Suggestion   []Artists
 }
 

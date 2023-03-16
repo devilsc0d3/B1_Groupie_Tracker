@@ -57,6 +57,7 @@
             <h1 class="name">{{.Name}}</h1>
             <p>★ {{index $.Language.CurrentLang 12}} {{.CreationDate}} ★</p>
             <p>♪ {{index $.Language.CurrentLang 13}} {{.FirstAlbum}} ♪</p>
+            <p>♫ gender : {{range .Gender}}{{.}}{{end}} ♫</p>
             <div class="divBehavior">
                 <a href="#members">
                     <img src="./static/image/group.png" class="scrollBehavior">
