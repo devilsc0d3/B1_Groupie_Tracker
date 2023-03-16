@@ -1,10 +1,6 @@
 package page
 
 import (
-	"context"
-	"fmt"
-	"github.com/zmb3/spotify"
-	"golang.org/x/oauth2/clientcredentials"
 	"html/template"
 	"net/http"
 )
@@ -25,15 +21,6 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-
-	//// test affiche categories
-	//for key, valeur := range groups {
-	//	fmt.Println(key, ":")
-	//	for i := 0; i < len(valeur); i++ {
-	//		fmt.Println(valeur[i].Name)
-	//	}
-	//}
-
 	if r.URL.Path != "/" {
 		http.Redirect(w, r, "/404", 303)
 	}
@@ -42,43 +29,6 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 	err := page.ExecuteTemplate(w, "home.html", bdd)
 	if err != nil {
 		return
-	}
-
-}
-
-var groups = map[string][]Artists{}
-
-func Spotify(group string, i int) {
-	// Créer une configuration client credentials pour l'authentification OAuth2
-	config := &clientcredentials.Config{
-		ClientID:     "317c8b50b7974d9ea372963d712069fd",
-		ClientSecret: "fbbb467fdfb6474f92719ab754b55fa4",
-		TokenURL:     spotify.TokenURL,
-	}
-	// Obtenir un client authentifié avec la configuration client credentials
-	token, err := config.Token(context.Background())
-	if err != nil {
-	}
-	client := spotify.Authenticator{}.NewClient(token)
-
-	// Rechercher l'artiste sur Spotify
-	results, err := client.Search(group, spotify.SearchTypeArtist)
-	if err != nil {
-		fmt.Print(err)
-	}
-
-	// Sélectionner le premier artiste trouvé
-	artist := results.Artists.Artists[0]
-
-	// Récupérer les catégories de musique de l'artiste
-	fullartist, err := client.GetArtist(artist.ID)
-	if err != nil {
-		fmt.Print(err)
-	}
-
-	// Ajouter l'artiste au dico
-	for _, category := range fullartist.Genres {
-		groups[category] = append(groups[category], bdd.Data[i])
 	}
 
 }

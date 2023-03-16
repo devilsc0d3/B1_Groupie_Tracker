@@ -1,6 +1,7 @@
 package page
 
 import (
+	structure "groupie-t/go_file/struct"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -139,7 +140,7 @@ func converseDates(date string) string {
 }
 
 func filterRangeCD(r *http.Request) {
-	var temp []Artists
+	var temp []structure.Artists
 	for i := 0; i < len(bdd.Show); i++ {
 		if strconv.FormatInt(bdd.Show[i].CreationDate, 10) == r.FormValue("range") {
 			temp = append(temp, bdd.Show[i])
@@ -149,7 +150,7 @@ func filterRangeCD(r *http.Request) {
 }
 
 func filterRangeFA(r *http.Request) {
-	var temp []Artists
+	var temp []structure.Artists
 	for i := 0; i < len(bdd.Show); i++ {
 		if bdd.Show[i].FirstAlbum == r.FormValue("range") {
 			temp = append(temp, bdd.Show[i])
@@ -158,9 +159,8 @@ func filterRangeFA(r *http.Request) {
 	bdd.Show = temp
 }
 
-// TODO : same input & function refactor
 func filters(nbr []int) {
-	var temp []Artists
+	var temp []structure.Artists
 	for _, s := range bdd.Show {
 		for _, n := range nbr {
 			if len(s.Members) == n {

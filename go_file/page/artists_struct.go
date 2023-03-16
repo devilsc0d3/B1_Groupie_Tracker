@@ -1,8 +1,12 @@
 package page
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/zmb3/spotify"
+	"golang.org/x/oauth2/clientcredentials"
+	"groupie-t/go_file/struct"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
@@ -11,56 +15,7 @@ import (
 	"time"
 )
 
-type Artists struct {
-	ID           int64    `json:"id"`
-	Image        string   `json:"image"`
-	Name         string   `json:"name"`
-	Members      []string `json:"members"`
-	CreationDate int64    `json:"creationDate"`
-	FirstAlbum   string   `json:"firstAlbum"`
-	Locations    Locations
-	ConcertDates Dates
-	Relations    Relation
-	Language     Language
-	Suggestion   []Artists
-}
-
-type Language struct {
-	En          []string
-	Fr          []string
-	Es          []string
-	Ge          []string
-	CurrentLang []string
-}
-
-type Base struct {
-	Nbr       int
-	Data      []Artists
-	Show      []Artists
-	Language  Language
-	DataGenre map[string][]Artists
-	ShowGenre map[string][]Artists
-}
-
-type Relation struct {
-	ID       int64               `json:"id"`
-	Relation map[string][]string `json:"datesLocations"`
-}
-
-type Locations struct {
-	ID        int64    `json:"id"`
-	Locations []string `json:"locations"`
-	Dates     string   `json:"dates"`
-}
-
-type Dates struct {
-	ID    int64    `json:"id"`
-	Dates []string `json:"dates"`
-}
-
-var bdd Base
-var dates Dates
-var rel Relation
+var bdd structure.Base
 
 func GetApi(url string, target interface{}) {
 	response, err := http.Get(url)
@@ -95,7 +50,7 @@ func Variable() {
 		"Die von Ihnen gesuchte Seite kann nicht gefunden werden.", "Bitte gehen Sie zur MusicMinder+ Homepage, indem Sie auf die folgende Schaltfläche klicken"}
 
 	bdd.Language.CurrentLang = bdd.Language.En
-	Savetest()
+	ReadFile()
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
 	for i := 0; i < len(bdd.Data); i++ {
@@ -118,7 +73,6 @@ func Variable() {
 	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < 52; i++ {
 		listShuffle := generateRandomList()
-		fmt.Println(listShuffle)
 		for o := 0; o < len(listShuffle); o++ {
 			bdd.Data[i].Suggestion = append(bdd.Data[i].Suggestion, bdd.Data[listShuffle[o]])
 		}
@@ -134,8 +88,8 @@ func Variable() {
 	http.HandleFunc("/research", SearchPage)
 }
 
-func TriGenre(array map[string][]Artists) {
-	temp := map[string][]Artists{}
+func TriGenre(array map[string][]structure.Artists) {
+	temp := map[string][]structure.Artists{}
 	for key, value := range array {
 		if len(value) > 4 {
 			temp[key] = value
@@ -153,7 +107,7 @@ func write() {
 	}
 }
 
-func Savetest() {
+func ReadFile() {
 	content, _ := os.ReadFile("../save.txt")
 	err1 := json.Unmarshal(content, &bdd.DataGenre)
 	if err1 != nil {
@@ -182,4 +136,41 @@ func IsPresent(nums []int, num int) bool {
 		}
 	}
 	return false
+}
+
+var groups = map[string][]structure.Artists{}
+
+func Spotify(group string, i int) {
+	// Créer une configuration client credentials pour l'authentification OAuth2
+	config := &clientcredentials.Config{
+		ClientID:     "317c8b50b7974d9ea372963d712069fd",
+		ClientSecret: "fbbb467fdfb6474f92719ab754b55fa4",
+		TokenURL:     spotify.TokenURL,
+	}
+	// Obtenir un client authentifié avec la configuration client credentials
+	token, err := config.Token(context.Background())
+	if err != nil {
+	}
+	client := spotify.Authenticator{}.NewClient(token)
+
+	// Rechercher l'artiste sur Spotify
+	results, err := client.Search(group, spotify.SearchTypeArtist)
+	if err != nil {
+		fmt.Print(err)
+	}
+
+	// Sélectionner le premier artiste trouvé
+	artist := results.Artists.Artists[0]
+
+	// Récupérer les catégories de musique de l'artiste
+	fullartist, err := client.GetArtist(artist.ID)
+	if err != nil {
+		fmt.Print(err)
+	}
+
+	// Ajouter l'artiste au dico
+	for _, category := range fullartist.Genres {
+		groups[category] = append(groups[category], bdd.Data[i])
+	}
+
 }
