@@ -30,11 +30,10 @@ span{
 }
 
 .proposition {
+    display: flex;
     font-family: "Comic Sans MS", serif;
     font-size: 35px;
     font-weight: 100;
-    margin: 30px 0 0 60px;
-    border-bottom: 2px solid rgba(255, 255, 255, 25%);
 }
 
 .proposition:hover{
@@ -75,6 +74,18 @@ span{
 .scrollBehavior {
     width: 35px;
     height: 35px;
+}
+
+.icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+}
+
+.divProposition {
+    display: flex;
+    align-items: center;
+    margin: 30px 0 0 60px;
 }
 
 .img{

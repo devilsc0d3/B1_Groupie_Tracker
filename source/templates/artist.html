@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="http://localhost:8080/static/css/slider.css">
         <link rel="stylesheet" href="http://localhost:8080/static/css/footer.css">
 
-        <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-        <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" />
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
 
 
         <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
@@ -75,55 +75,72 @@
     </section>
 
     <section>
+        <div class="divProposition lineEffect">
+        <img src="./static/image/group.png" class="icon">
         <h1 class="proposition" id="members">{{index $.Language.CurrentLang 14}} :</h1>
+        </div>
         <p>
             {{range $i, $member := .Members}}
                 {{- if ne $i 0 -}}, {{end}}
                 {{- $member -}}
             {{end}}
         </p>
+        <div class="divProposition lineEffect">
+        <img src="./static/image/live.png" class="icon">
         <h1 class="proposition" id="concert">{{index $.Language.CurrentLang 15}} :</h1>
+        </div>
             {{range $location, $date := .Relations.Relation}}
                 <p> {{$location}}  : {{range $date}} <span>{{.}}</span> {{end}} </p>
                 <br>
             {{end}}
-
-
+        <div class="divProposition lineEffect">
+        <img src="./static/image/emplacement.png" class="icon">
         <h1 class="proposition" id="maps">{{index $.Language.CurrentLang 16}} :</h1>
-
+        </div>
         <div id="map" style="width:800px;height:500px;text-align: center; margin: 50px auto; border-radius: 5px"></div>
-        <script>
-            var map = new ol.Map({
-                target: 'map',
-                layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.OSM()
-                    })
-                ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat([-87.6298, 41.8781]),
-                    zoom: 10
-                })
+
+        <script type="text/javascript">
+            mapboxgl.accessToken = 'pk.eyJ1IjoibGVvYnJ2IiwiYSI6ImNsZmJmcms3MjBjdXkzcG12cmc5Nno1bmwifQ.Mbvg3DAfN_1-gscArP8hFg';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [-96, 37.8],
+                zoom: 3
             });
-            var marker = new ol.Feature({
-                geometry: new ol.geom.Point(
-                    ol.proj.fromLonLat([-87.6298, 41.8781])
-                )
-            });
-            var markerVectorLayer = new ol.layer.Vector({
-                source: new ol.source.Vector({
-                    features: [marker]
-                }),
-                style: new ol.style.Style({
-                    image: new ol.style.Icon({
-                        anchor: [0.5, 1],
-                        src: 'https://openlayers.org/en/latest/examples/data/icon.png'
-                    })
-                })
-            });
-            map.addLayer(markerVectorLayer);
+
+            function addMarker(cityName, popupText) {
+                //Envoyer une requête pour géocoder la ville
+                var url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + cityName + '.json?access_token=' + mapboxgl.accessToken;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        //Récupérer les coordonnées géographiques de la première réponse
+                        var longitude = data.features[0].center[0];
+                        var latitude = data.features[0].center[1];
+
+                        //Ajouter un marqueur à la carte aux coordonnées correspondantes
+                        var marker = new mapboxgl.Marker()
+                            .setLngLat([longitude, latitude])
+                            .addTo(map);
+
+                        //Ajouter une popup au marqueur
+                        var popup = new mapboxgl.Popup({ offset: 25 })
+                            .setText(popupText)
+                            .addTo(map);
+
+                        marker.setPopup(popup);
+                    });
+            }
+
         </script>
+        {{range $key, $value := .Relations.Relation}}
+        <script>addMarker("{{$key}}","{{$value}}")</script>
+        {{end}}
+
+        <div class="divProposition lineEffect">
+        <img src="./static/image/musical.png" class="icon">
         <h1 class="proposition" id="suggestion">{{index $.Language.CurrentLang 17}} :</h1>
+        </div>
 
         <section class="product">
             <button class="pre-btn"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
