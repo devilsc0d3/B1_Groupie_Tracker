@@ -111,7 +111,7 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 		date := converseDates(r.FormValue("firstA"))
 		fmt.Print(date)
 		for i := 0; i < 52; i++ {
-			if strconv.FormatInt(bdd.Data[i].CreationDate, 10) == date {
+			if bdd.Data[i].FirstAlbum == date {
 				bdd.Show = append(bdd.Show, bdd.Data[i])
 			}
 		}
@@ -153,7 +153,7 @@ func filterRangeCD(r *http.Request) {
 func filterRangeFA(r *http.Request) {
 	var temp []Artists
 	for i := 0; i < len(bdd.Show); i++ {
-		if bdd.Show[i].FirstAlbum == r.FormValue("range") {
+		if bdd.Show[i].FirstAlbum == r.FormValue("firstA") {
 			temp = append(temp, bdd.Show[i])
 		}
 	}
