@@ -1,6 +1,7 @@
 package page
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -96,6 +97,24 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 	//range
 	if r.FormValue("rangeCheck") == "on" {
 		filterRange(r)
+	}
+
+	if r.FormValue("firstACheck") == "on" {
+		date := r.FormValue("creationD")
+
+		var liste []string
+
+		temp := ""
+
+		for i := 0; i < len(date); i++ {
+			temp += string(date[i])
+			if date[i] == '-' {
+				liste = append(liste, temp)
+				temp = temp[0:0]
+			}
+		}
+		result := liste[2] + "-" + liste[1] + "-" + liste[0]
+		fmt.Print(result)
 	}
 
 	err := page.ExecuteTemplate(w, "research.html", bdd)
