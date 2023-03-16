@@ -13,7 +13,7 @@
 }
 
 .product-container {
-  padding: 0 10vw;
+  padding: 0 5vw;
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -26,13 +26,13 @@
 .product-card {
   flex: 0 0 auto;
   width: 250px;
-  height: 450px;
   margin-right: 40px;
 }
 
 .product-image {
+  padding: 50px 0 0 20px;
   position: relative;
-  width: 100%;
+  width: 400px;
   height: 350px;
   overflow: hidden;
 }
@@ -55,6 +55,7 @@
   height: 100%;
   position: absolute;
   top: 0;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -2,8 +2,10 @@ package page
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -18,6 +20,7 @@ type Artists struct {
 	ConcertDates Dates
 	Relations    Relation
 	Language     Language
+	Suggestion   []Artists
 }
 
 type Language struct {
@@ -29,10 +32,12 @@ type Language struct {
 }
 
 type Base struct {
-	Nbr      int
-	Data     []Artists
-	Show     []Artists
-	Language Language
+	Nbr       int
+	Data      []Artists
+	Show      []Artists
+	Language  Language
+	DataGenre map[string][]Artists
+	ShowGenre map[string][]Artists
 }
 
 type Relation struct {
@@ -88,7 +93,7 @@ func Variable() {
 		"Die von Ihnen gesuchte Seite kann nicht gefunden werden.", "Bitte gehen Sie zur MusicMinder+ Homepage, indem Sie auf die folgende Schaltfläche klicken"}
 
 	bdd.Language.CurrentLang = bdd.Language.En
-
+	Savetest()
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
 	for i := 0; i < len(bdd.Data); i++ {
@@ -101,11 +106,51 @@ func Variable() {
 		bdd.Data[i].Language = bdd.Language
 	}
 
+	TriGenre(bdd.DataGenre)
+	//-----------------------------------
+
+	//for i := 0; i < 52; i++ {
+	//	Spotify(bdd.Data[i].Name, i)
+	//}
+	//write()
+
+	//-----------------
+
 	for i := 0; i < len(bdd.Data); i++ {
+		bdd.Data[i].Suggestion = bdd.Data[0:10]
+
 		artist := bdd.Data[i]
 		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
 			ArtistPage(w, r, artist)
 		})
 	}
 	http.HandleFunc("/research", SearchPage)
+}
+
+func TriGenre(array map[string][]Artists) {
+	temp := map[string][]Artists{}
+	for key, value := range array {
+		if len(value) > 4 {
+			temp[key] = value
+		}
+	}
+	bdd.ShowGenre = temp
+}
+
+func write() {
+	b, _ := json.Marshal(groups)
+	save, _ := os.Create("save.txt")
+	_, err := save.Write(b)
+	if err != nil {
+		return
+	}
+}
+
+func Savetest() {
+	content, _ := os.ReadFile("save.txt")
+	err1 := json.Unmarshal(content, &bdd.DataGenre)
+	if err1 != nil {
+		fmt.Print(err1, "error")
+		return
+	}
 }

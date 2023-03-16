@@ -25,9 +25,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	//for i := 0; i < 52; i++ {
-	//	Spotify(bdd.Data[i].Name, i)
-	//}
+
 	//// test affiche categories
 	//for key, valeur := range groups {
 	//	fmt.Println(key, ":")
@@ -53,8 +51,8 @@ var groups = map[string][]Artists{}
 func Spotify(group string, i int) {
 	// Créer une configuration client credentials pour l'authentification OAuth2
 	config := &clientcredentials.Config{
-		ClientID:     "73b0824483b349a7bccb211d72dff641",
-		ClientSecret: "104f04fdfb984e54a3655f740dc64c7c",
+		ClientID:     "317c8b50b7974d9ea372963d712069fd",
+		ClientSecret: "fbbb467fdfb6474f92719ab754b55fa4",
 		TokenURL:     spotify.TokenURL,
 	}
 	// Obtenir un client authentifié avec la configuration client credentials

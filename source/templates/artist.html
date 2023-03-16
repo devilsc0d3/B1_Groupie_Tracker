@@ -125,7 +125,24 @@
         </script>
         <h1 class="proposition" id="suggestion">{{index $.Language.CurrentLang 17}} :</h1>
 
+        <section class="product">
+            <button class="pre-btn"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
 
+            <div class="product-container">
+                {{range .Suggestion}}
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{{.ID}}">
+                            <img src="{{.Image}}" class="image" alt="">
+                        </a>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+            <script src="http://localhost:8080/static/js/script.js"></script>
+
+        </section>
     </section>
 
 
