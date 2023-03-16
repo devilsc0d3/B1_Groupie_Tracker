@@ -1,6 +1,7 @@
 # Order
 ***
 
+[//]: # (TODO: finish me)
 ### Objectives
     Groupie Trackers consists on receiving a given API and manipulate the data contained in it, in order to create a site, displaying the information.
     It will be given an API, that consists in four parts:
