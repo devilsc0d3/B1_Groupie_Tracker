@@ -90,7 +90,6 @@ input[type="submit"] {
     font-size: 20px;
 }
 
-
 input[type="text"]{
     border: none;
     width: 100%;
@@ -104,6 +103,50 @@ input[type="text"]{
     z-index: 999;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url("http://localhost:8080/static/image/calendrier.png");
+}
+
+input[type="date"] {
+    margin-top: 5px;
+    appearance: none;
+    width: 122px;
+    height: 32px;
+    color: #ffffff;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 18px;
+    border:1px solid #ecf0f1;
+    border-radius: 15px;
+    background:#001126;
+    padding:5px;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+input[type="date"], focus {
+    color: #ffffff;
+    box-shadow: none;
+}
+
+label {
+    font-size: 20px;
+    align-items: center;
+    display: flex;
+}
+
+.submit {
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 4px;
+}
+
+.span {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
 .filters {
     display: flex;
     justify-content: center;
@@ -113,6 +156,16 @@ input[type="text"]{
     color: #ffff;
     font-family: "Comic Sans MS", serif;
     font-size: 30px;
+}
+
+.wordFilters {
+    display: flex;
+    font-family: "Comic Sans MS", Serif, serif;
+    font-size: 20px;
+    font-weight: 10;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 
 .menu {

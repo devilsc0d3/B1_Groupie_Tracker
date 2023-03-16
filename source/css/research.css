@@ -14,12 +14,6 @@ a{
     text-decoration : none;
 }
 
-.submit {
-    height: 30px;
-    margin-top: 6px;
-    margin-left: 4px;
-}
-
 ::placeholder{
     color: white;
     font-size: 30px;
@@ -52,11 +46,6 @@ a{
     font-family: "Comic Sans MS", Serif, serif;
     font-size: 25px;
     margin-top: 6vh;
-}
-
-.wordFilters {
-    display: flex;
-    font-family: "Comic Sans MS", Serif, serif;
 }
 
 .image{
