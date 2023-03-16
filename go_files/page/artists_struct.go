@@ -83,11 +83,8 @@ func Variable() {
 	}
 
 	for i := 0; i < len(bdd.Data); i++ {
-
-		artist := bdd.Data[i]
-		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
-			ArtistPage(w, r, artist)
-		})
+		artist := &bdd.Data[i]
+		http.HandleFunc("/"+strconv.FormatInt(artist.ID, 10), createHandlerFunction(artist))
 	}
 	http.HandleFunc("/research", SearchPage)
 }
@@ -187,4 +184,10 @@ func Spotify(group string, i int) {
 		groups[category] = append(groups[category], bdd.Data[i])
 	}
 
+}
+
+func createHandlerFunction(artist *structure.Artists) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		ArtistPage(w, r, *artist)
+	}
 }
