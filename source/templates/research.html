@@ -32,14 +32,12 @@
                 <img class="imgHome" src="http://localhost:8080/static/image/globe.png" alt="globe logo">
                 <h1 class="h1Search">{{index .Language.CurrentLang 2}}</h1>
                 <form method="post" class="menu">
-                    <label>
                         <select name="language">
                             <option value="en">en</option>
                             <option value="fr">fr</option>
                             <option value="es">es</option>
                             <option value="ge">ge</option>
                         </select>
-                    </label>
                     <input type="submit" value="{{index .Language.CurrentLang 3}}" class="but">
                 </form>
             </div>
@@ -48,9 +46,7 @@
 
 
             <form method="post">
-                <label>
                     <input type="text" name="search" placeholder="{{index .Language.CurrentLang 9}}" list="suggestions" maxlength="64" autofocus>
-                </label>
                 <datalist id="suggestions">
                     {{range .Data}}
                     <option value="{{.Name}}">{{.Name}} - {{index $.Language.CurrentLang 4}}</option>
@@ -91,7 +87,7 @@
                 <label for="8">8&nbsp;</label>
                 <h1 class="wordFilters">&nbsp;{{index .Language.CurrentLang 11}} : </h1>
                 <input type="checkbox" value="on" name="firstACheck">
-                <input type="range" min="1963" max="2018" id="firstA" name="range">
+                <input type="date" min="30121963" max="18022018" id="firstA" name="range">
                 <span id="firstAValue"></span>
                 <input type="submit" value="Submit" class="submit">
             </div>

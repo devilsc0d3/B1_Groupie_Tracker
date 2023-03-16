@@ -17,6 +17,9 @@ func ArtistPage(w http.ResponseWriter, r *http.Request, data interface{}) {
 		} else if r.FormValue("language") == "ge" {
 			bdd.Language.CurrentLang = bdd.Language.Ge
 		}
+		for i := 0; i < 52; i++ {
+			bdd.Data[i].CurrentLang = bdd.Language.CurrentLang
+		}
 	}
 	err := page.ExecuteTemplate(w, "artist.html", data)
 	if err != nil {
