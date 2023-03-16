@@ -1,7 +1,7 @@
 package page
 
 import (
-	structure "groupie-t/go_file/struct"
+	structure "groupie-t/go_files/struct"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -67,35 +67,35 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 
 	//filters
 	//checkbox
-	var listeu []int
+	var arrayNbrMembers []int
 	if r.FormValue("checkbox1") == "on" {
-		listeu = append(listeu, 1)
+		arrayNbrMembers = append(arrayNbrMembers, 1)
 	}
 	if r.FormValue("checkbox2") == "on" {
-		listeu = append(listeu, 2)
+		arrayNbrMembers = append(arrayNbrMembers, 2)
 	}
 	if r.FormValue("checkbox3") == "on" {
-		listeu = append(listeu, 3)
+		arrayNbrMembers = append(arrayNbrMembers, 3)
 	}
 	if r.FormValue("checkbox4") == "on" {
-		listeu = append(listeu, 4)
+		arrayNbrMembers = append(arrayNbrMembers, 4)
 	}
 	if r.FormValue("checkbox5") == "on" {
-		listeu = append(listeu, 5)
+		arrayNbrMembers = append(arrayNbrMembers, 5)
 	}
 	if r.FormValue("checkbox6") == "on" {
-		listeu = append(listeu, 6)
+		arrayNbrMembers = append(arrayNbrMembers, 6)
 	}
 	if r.FormValue("checkbox7") == "on" {
-		listeu = append(listeu, 7)
+		arrayNbrMembers = append(arrayNbrMembers, 7)
 	}
 	if r.FormValue("checkbox8") == "on" {
-		listeu = append(listeu, 8)
+		arrayNbrMembers = append(arrayNbrMembers, 8)
 	}
-	if len(listeu) == 0 {
-		listeu = []int{1, 2, 3, 4, 5, 6, 7, 8}
+	if len(arrayNbrMembers) == 0 {
+		arrayNbrMembers = []int{1, 2, 3, 4, 5, 6, 7, 8}
 	}
-	filters(listeu)
+	filters(arrayNbrMembers)
 
 	//range
 	//creation date
@@ -124,18 +124,18 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func converseDates(date string) string {
-	var liste []string
+	var arrayDate []string
 	temp := ""
 	for i := 0; i < len(date); i++ {
 		if date[i] == '-' {
-			liste = append(liste, temp)
+			arrayDate = append(arrayDate, temp)
 			temp = temp[0:0]
 		} else {
 			temp += string(date[i])
 		}
 	}
-	liste = append(liste, temp)
-	result := liste[2] + "-" + liste[1] + "-" + liste[0]
+	arrayDate = append(arrayDate, temp)
+	result := arrayDate[2] + "-" + arrayDate[1] + "-" + arrayDate[0]
 	return result
 }
 

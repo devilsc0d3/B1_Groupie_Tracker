@@ -42,17 +42,6 @@
 
         <img class="barrette" src="http://localhost:8080/static/image/gradient.png" alt="blue gradient">
 
-<!--        <section class="sectionImage">-->
-<!--            {{range .Data}}-->
-<!--                <a href="{{.ID}}">-->
-<!--                    <div class="divImage">-->
-<!--                        <img src="{{.Image}}" class="image" alt="Image group">-->
-<!--                        <h1 class="h1Name">{{.Name}}</h1>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            {{end}}-->
-<!--        </section>-->
-
         {{range $key, $value := .ShowGenre}}
         <section class="product">
             <h1 class="subtitle"><i>{{$key}}</i></h1>
@@ -73,9 +62,7 @@
             </div>
         </section>
         {{end}}
-
-
-        <script src="http://localhost:8080/static/js/script.js"></script>
+        <script src="http://localhost:8080/static/js/slider.js"></script>
 
         <footer>
             <h1 class="title_footer"> MusicMinder+ </h1>

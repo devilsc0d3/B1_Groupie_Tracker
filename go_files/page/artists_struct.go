@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"github.com/zmb3/spotify"
 	"golang.org/x/oauth2/clientcredentials"
-	"groupie-t/go_file/struct"
+	"groupie-t/go_files/struct"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
@@ -141,35 +141,33 @@ func IsPresent(nums []int, num int) bool {
 var groups = map[string][]structure.Artists{}
 
 func Spotify(group string, i int) {
-	// Créer une configuration client credentials pour l'authentification OAuth2
+	// create a config client for authenticator
 	config := &clientcredentials.Config{
 		ClientID:     "317c8b50b7974d9ea372963d712069fd",
 		ClientSecret: "fbbb467fdfb6474f92719ab754b55fa4",
 		TokenURL:     spotify.TokenURL,
 	}
-	// Obtenir un client authentifié avec la configuration client credentials
+	// get a client authenticator
 	token, err := config.Token(context.Background())
 	if err != nil {
 	}
 	client := spotify.Authenticator{}.NewClient(token)
 
-	// Rechercher l'artiste sur Spotify
+	// search artist on Spotify
 	results, err := client.Search(group, spotify.SearchTypeArtist)
 	if err != nil {
 		fmt.Print(err)
 	}
 
-	// Sélectionner le premier artiste trouvé
 	artist := results.Artists.Artists[0]
 
-	// Récupérer les catégories de musique de l'artiste
-	fullartist, err := client.GetArtist(artist.ID)
+	// get CATEGORIES
+	fullArtist, err := client.GetArtist(artist.ID)
 	if err != nil {
 		fmt.Print(err)
 	}
 
-	// Ajouter l'artiste au dico
-	for _, category := range fullartist.Genres {
+	for _, category := range fullArtist.Genres {
 		groups[category] = append(groups[category], bdd.Data[i])
 	}
 

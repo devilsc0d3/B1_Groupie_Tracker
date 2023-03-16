@@ -37,7 +37,7 @@ git clone https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git
 ```
 - Launch the website with the command :
 ```bash
-cd go_file | go run .
+cd go_files | go run .
 ```
 
 # Credit

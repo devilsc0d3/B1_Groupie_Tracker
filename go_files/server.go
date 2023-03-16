@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"groupie-t/go_file/page"
+	"groupie-t/go_files/page"
 	"net/http"
 )
 
