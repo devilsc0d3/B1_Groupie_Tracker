@@ -2,8 +2,10 @@ package page
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -19,6 +21,7 @@ type Artists struct {
 	Relations    Relation
 	Genre        []string
 	Suggestion   []Artists
+	CurrentLang  []string
 }
 
 type Language struct {
@@ -71,6 +74,8 @@ func GetApi(url string, target interface{}) {
 	}
 }
 
+var gro = map[string][]Artists{}
+
 func Variable() {
 
 	bdd.Language.En = []string{"Home", "Research", "Language", "send",
@@ -87,7 +92,7 @@ func Variable() {
 		"Seit", "Erstes Album auf", "Mitglieder", "Konzerte", "Karte", "Vorschläge"}
 
 	bdd.Language.CurrentLang = bdd.Language.En
-
+	Savetest()
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
 	for i := 0; i < len(bdd.Data); i++ {
@@ -96,14 +101,15 @@ func Variable() {
 		GetApi("https://groupietrackers.herokuapp.com/api/relation/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Relations)
 	}
 
-	//- TODO : manage genres
-	var gro = map[string][]Artists{}
-
-	gro["rock"] = bdd.Data[0:5]
-	gro["rockb"] = bdd.Data[6:20]
-	gro["rockc"] = bdd.Data[25:48]
-	TriGenre(gro)
+	TriGenre(bdd.DataGenre)
 	//-----------------------------------
+
+	//for i := 0; i < 52; i++ {
+	//	Spotify(bdd.Data[i].Name, i)
+	//}
+	//write()
+
+	//-----------------
 
 	for i := 0; i < len(bdd.Data); i++ {
 		bdd.Data[i].Suggestion = bdd.Data[0:10]
@@ -119,10 +125,27 @@ func Variable() {
 func TriGenre(array map[string][]Artists) {
 	temp := map[string][]Artists{}
 	for key, value := range array {
-		if len(value) > 10 {
+		if len(value) > 4 {
 			temp[key] = value
-
 		}
 	}
-	bdd.DataGenre = temp
+	bdd.ShowGenre = temp
+}
+
+func write() {
+	b, _ := json.Marshal(groups)
+	save, _ := os.Create("save.txt")
+	_, err := save.Write(b)
+	if err != nil {
+		return
+	}
+}
+
+func Savetest() {
+	content, _ := os.ReadFile("save.txt")
+	err1 := json.Unmarshal(content, &bdd.DataGenre)
+	if err1 != nil {
+		fmt.Print(err1, "error")
+		return
+	}
 }

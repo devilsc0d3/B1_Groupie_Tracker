@@ -75,10 +75,12 @@ a{
 }
 
 .h1Name{
+    width: 235px;
     color: white;
     font-family: "Comic Sans MS", Serif, serif;
     font-size: 27px;
     font-weight: 60;
+    text-align: center;
 }
 
 .h1Search{
@@ -110,10 +112,13 @@ a{
 }
 
 .image{
-    width: 100%;
+    width: 200px;
     height: 60%;
+    margin: 20px;
     border-radius : 20px;
     transition: all 0.2s ease-out;
+    text-align: center;
+    align-items: center;
     box-shadow:
             0 0 8px #fff,
             inset 0 0 8px #fff,
@@ -122,6 +127,7 @@ a{
             0 0 32px #2e6bc7,
             inset 0 0 32px #2e6bc7;
 }
+
 
 .image:hover {
     border: solid #ffff;
