@@ -147,7 +147,7 @@ func write() {
 }
 
 func Savetest() {
-	content, _ := os.ReadFile("save.txt")
+	content, _ := os.ReadFile("../save.txt")
 	err1 := json.Unmarshal(content, &bdd.DataGenre)
 	if err1 != nil {
 		fmt.Print(err1, "error")

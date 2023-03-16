@@ -108,21 +108,13 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.FormValue("firstACheck") == "on" {
-		date := r.FormValue("creationD")
-
-		var liste []string
-
-		temp := ""
-
-		for i := 0; i < len(date); i++ {
-			temp += string(date[i])
-			if date[i] == '-' {
-				liste = append(liste, temp)
-				temp = temp[0:0]
+		date := converseDates(r.FormValue("firstA"))
+		fmt.Print(date)
+		for i := 0; i < 52; i++ {
+			if strconv.FormatInt(bdd.Data[i].CreationDate, 10) == date {
+				bdd.Show = append(bdd.Show, bdd.Data[i])
 			}
 		}
-		result := liste[2] + "-" + liste[1] + "-" + liste[0]
-		fmt.Print(result)
 	}
 
 	err := page.ExecuteTemplate(w, "research.html", bdd)
@@ -130,6 +122,22 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+}
+
+func converseDates(date string) string {
+	var liste []string
+	temp := ""
+	for i := 0; i < len(date); i++ {
+		if date[i] == '-' {
+			liste = append(liste, temp)
+			temp = temp[0:0]
+		} else {
+			temp += string(date[i])
+		}
+	}
+	liste = append(liste, temp)
+	result := liste[2] + "-" + liste[1] + "-" + liste[0]
+	return result
 }
 
 func filterRangeCD(r *http.Request) {
