@@ -4,9 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 )
 
 type Artists struct {
@@ -107,17 +109,22 @@ func Variable() {
 	}
 
 	TriGenre(bdd.DataGenre)
-	//-----------------------------------
-
+	//-----------------------------------//
 	//for i := 0; i < 52; i++ {
 	//	Spotify(bdd.Data[i].Name, i)
 	//}
 	//write()
-
-	//-----------------
+	//-----------------------------------//
+	rand.Seed(time.Now().UnixNano())
+	for i := 0; i < 52; i++ {
+		listShuffle := generateRandomList()
+		fmt.Println(listShuffle)
+		for o := 0; o < len(listShuffle); o++ {
+			bdd.Data[i].Suggestion = append(bdd.Data[i].Suggestion, bdd.Data[listShuffle[o]])
+		}
+	}
 
 	for i := 0; i < len(bdd.Data); i++ {
-		bdd.Data[i].Suggestion = bdd.Data[0:10]
 
 		artist := bdd.Data[i]
 		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
@@ -153,4 +160,26 @@ func Savetest() {
 		fmt.Print(err1, "error")
 		return
 	}
+}
+
+func generateRandomList() []int {
+	nums := make([]int, 30)
+	for i := 0; i < 30; i++ {
+		randomNum := rand.Intn(52)
+		for IsPresent(nums, randomNum) {
+			randomNum = rand.Intn(52)
+		}
+		nums[i] = randomNum
+	}
+
+	return nums
+}
+
+func IsPresent(nums []int, num int) bool {
+	for _, n := range nums {
+		if n == num {
+			return true
+		}
+	}
+	return false
 }
