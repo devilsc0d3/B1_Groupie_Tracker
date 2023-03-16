@@ -30,7 +30,6 @@ a{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    /*margin-top: 35vh;*/
     margin-top: calc(32vh + 100px);
 }
 
