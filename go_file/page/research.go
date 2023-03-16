@@ -1,7 +1,6 @@
 package page
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -109,9 +108,8 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 
 	if r.FormValue("firstACheck") == "on" {
 		date := converseDates(r.FormValue("firstA"))
-		fmt.Print(date)
 		for i := 0; i < 52; i++ {
-			if strconv.FormatInt(bdd.Data[i].CreationDate, 10) == date {
+			if bdd.Data[i].FirstAlbum == date {
 				bdd.Show = append(bdd.Show, bdd.Data[i])
 			}
 		}
