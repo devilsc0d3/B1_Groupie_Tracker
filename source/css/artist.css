@@ -58,12 +58,14 @@ span{
 }
 
 .divImage{
+    margin-left: 50px;
     width: 240px;
     height: 240px;
 }
 
 .divText{
     height: 100px;
+    margin-left: 50px;
     margin-top: 25px;
 }
 
