@@ -48,9 +48,10 @@
                 <datalist id="suggestions">
                     {{range .Data}}
                     <option value="{{.Name}}">{{.Name}} - {{index $.Language.CurrentLang 4}}</option>
+                    <option value="{{.FirstAlbum}}">{{.FirstAlbum}} - {{index $.Language.CurrentLang 20}}</option>
                     <option value="{{.CreationDate}}">{{.CreationDate}} - {{index $.Language.CurrentLang 5}}</option>
                     {{range .Members}}
-                    <option value="{{.}}">{{.}} - {{index $.Language.CurrentLang 12}}</option>
+                    <option value="{{.}}">{{.}} - {{index $.Language.CurrentLang 14}}</option>
                     {{end}}
                     {{range .Locations.Locations}}
                     <option value="{{.}}">{{.}} - {{index $.Language.CurrentLang 6}}</option>
@@ -58,6 +59,7 @@
                     {{range $key, $value := .Relations.Relation}}
                     {{range $value}}  <option value="{{.}}">{{.}} - {{index $.Language.CurrentLang 7}}</option> {{end}}
                     {{end}}
+
                     {{end}}
                 </datalist>
 

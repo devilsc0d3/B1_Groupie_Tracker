@@ -49,6 +49,12 @@ func SearchPage(w http.ResponseWriter, r *http.Request) {
 			if strconv.FormatInt(bdd.Data[i].CreationDate, 10) == r.FormValue("search") {
 				bdd.Show = append(bdd.Show, bdd.Data[i])
 			}
+
+			//FirstAlbum
+			date := r.FormValue("search")
+			if bdd.Data[i].FirstAlbum == date {
+				bdd.Show = append(bdd.Show, bdd.Data[i])
+			}
 		}
 	}
 	//lang

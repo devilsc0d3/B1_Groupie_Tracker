@@ -16,6 +16,7 @@ import (
 )
 
 var bdd structure.Base
+var ArrayGender [][]string
 
 func GetApi(url string, target interface{}) {
 	response, err := http.Get(url)
@@ -30,26 +31,24 @@ func GetApi(url string, target interface{}) {
 	}
 }
 
-var ArrayGender [][]string
-
 func Variable() {
 
 	bdd.Language.En = []string{"Home", "Research", "Language", "send",
 		"Group", "Creation date", "Location", "Dates", "No results for your search...", "Group, member, location, concert date", "Number of members", "First album date",
 		"Since", "First album on", "Members", "Concerts", "Map", "Suggestions",
-		"The page you were looking for cannot be found.", "Please go to the MusicMinder+ home page by clicking the button below"}
+		"The page you were looking for cannot be found.", "Please go to the MusicMinder+ home page by clicking the button below", "First Album", "Gender"}
 	bdd.Language.Fr = []string{"Accueil", "Recherche", "Langue", "envoyer",
 		"Groupe", "Date de création", "Lieu", "Dates", "Aucun résultat pour votre recherche...", "Groupe, membre, lieu, date de concert", "Nombre de membres", "Date du premier album",
 		"Depuis", "Premier album le", "Membres", "Concerts", "Carte", "Suggestions",
-		"La page que vous recherchez est introuvable.", "Veuillez vous rendre sur la page d'accueil de MusicMinder+ en cliquant sur le bouton ci-dessous"}
+		"La page que vous recherchez est introuvable.", "Veuillez vous rendre sur la page d'accueil de MusicMinder+ en cliquant sur le bouton ci-dessous", "Premier Album", "Genre"}
 	bdd.Language.Es = []string{"Inicio", "Búsqueda", "Idioma", "enviar",
 		"Grupo", "Fecha de creación", "Ubicación", "Fechas", "No hay resultados para su búsqueda...", "Grupo, miembro, lugar, fecha del concierto", "Número de miembros", "Fecha del primer álbum",
 		"Desde", "Primer álbum el", "Miembros", "Conciertos", "Mapa", "Sugerencias",
-		"La página que buscaba no se encuentra.", "Vaya a la página de inicio de MusicMinder+ haciendo clic en el botón siguiente"}
+		"La página que buscaba no se encuentra.", "Vaya a la página de inicio de MusicMinder+ haciendo clic en el botón siguiente", "Primer álbum", "Género"}
 	bdd.Language.Ge = []string{"Heimat", "Forschung", "Sprache", "senden",
 		"Gruppe", "Erstellungsdatum", "Ort", "Daten", "Keine Ergebnisse für Ihre Suche...", "Gruppe, Mitglied, Ort, Konzertdatum", "Anzahl der Mitglieder", "Datum des ersten Albums",
 		"Seit", "Erstes Album auf", "Mitglieder", "Konzerte", "Karte", "Vorschläge",
-		"Die von Ihnen gesuchte Seite kann nicht gefunden werden.", "Bitte gehen Sie zur MusicMinder+ Homepage, indem Sie auf die folgende Schaltfläche klicken"}
+		"Die von Ihnen gesuchte Seite kann nicht gefunden werden.", "Bitte gehen Sie zur MusicMinder+ Homepage, indem Sie auf die folgende Schaltfläche klicken", "Erstes Album", "Geschlecht"}
 
 	bdd.Language.CurrentLang = bdd.Language.En
 	ReadFile()
