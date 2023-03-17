@@ -31,8 +31,7 @@ func GetApi(url string, target interface{}) {
 	}
 }
 
-func Variable() {
-
+func InitLangue() {
 	bdd.Language.En = []string{"Home", "Research", "Language", "send",
 		"Group", "Creation date", "Location", "Dates", "No results for your search...", "Group, member, location, concert date", "Number of members", "First album date",
 		"Since", "First album on", "Members", "Concerts", "Map", "Suggestions",
@@ -51,8 +50,9 @@ func Variable() {
 		"Die von Ihnen gesuchte Seite kann nicht gefunden werden.", "Bitte gehen Sie zur MusicMinder+ Homepage, indem Sie auf die folgende Schaltfläche klicken", "Erstes Album", "Geschlecht"}
 
 	bdd.Language.CurrentLang = bdd.Language.En
-	ReadFile()
-	ReadFileList()
+}
+
+func InitApi() {
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
 	for i := 0; i < len(bdd.Data); i++ {
@@ -60,19 +60,16 @@ func Variable() {
 		GetApi("https://groupietrackers.herokuapp.com/api/dates/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].ConcertDates)
 		GetApi("https://groupietrackers.herokuapp.com/api/relation/"+strconv.FormatInt(int64(i+1), 10), &bdd.Data[i].Relations)
 	}
+}
 
+func InitGender() {
 	for i := 0; i < 52; i++ {
 		bdd.Data[i].Language = bdd.Language
 		bdd.Data[i].Gender = ArrayGender[i]
-
 	}
-	TriGenre(bdd.DataGenre)
-	//-----------------------------------//
-	//for i := 0; i < 52; i++ {
-	//	Spotify(bdd.Data[i].Name, i)
-	//}
-	//write()
-	//-----------------------------------//
+}
+
+func InitSuggestion() {
 	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < 52; i++ {
 		listShuffle := generateRandomList()
@@ -80,6 +77,16 @@ func Variable() {
 			bdd.Data[i].Suggestion = append(bdd.Data[i].Suggestion, bdd.Data[listShuffle[o]])
 		}
 	}
+}
+
+func Variable() {
+	InitLangue()
+	ReadFile()
+	ReadFileList()
+	InitApi()
+	InitGender()
+	TriGenre(bdd.DataGenre)
+	InitSuggestion()
 
 	for i := 0; i < len(bdd.Data); i++ {
 		artist := &bdd.Data[i]
