@@ -19,6 +19,12 @@
 
     - Search-bar
     - Filters
+        - Artist/band name
+        - Members
+        - Locations
+        - First album date
+        - Creation date
+        - Concert date
     - Map
     - Gender
     - Different languages (English, French, Spanich, German...)
