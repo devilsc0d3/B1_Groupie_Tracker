@@ -96,42 +96,9 @@
         <img src="./static/image/emplacement.png" class="icon">
         <h1 class="proposition" id="maps">{{index $.Language.CurrentLang 16}} :</h1>
         </div>
-        <div id="map" style="width:800px;height:500px;text-align: center; margin: 50px auto; border-radius: 5px"></div>
+        <div id="map"></div>
 
-        <script type="text/javascript">
-            mapboxgl.accessToken = 'pk.eyJ1IjoibGVvYnJ2IiwiYSI6ImNsZmJmcms3MjBjdXkzcG12cmc5Nno1bmwifQ.Mbvg3DAfN_1-gscArP8hFg';
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
-                center: [-96, 37.8],
-                zoom: 3
-            });
-
-            function addMarker(cityName, popupText) {
-                //Envoyer une requête pour géocoder la ville
-                var url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + cityName + '.json?access_token=' + mapboxgl.accessToken;
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => {
-                        //Récupérer les coordonnées géographiques de la première réponse
-                        var longitude = data.features[0].center[0];
-                        var latitude = data.features[0].center[1];
-
-                        //Ajouter un marqueur à la carte aux coordonnées correspondantes
-                        var marker = new mapboxgl.Marker()
-                            .setLngLat([longitude, latitude])
-                            .addTo(map);
-
-                        //Ajouter une popup au marqueur
-                        var popup = new mapboxgl.Popup({ offset: 25 })
-                            .setText(popupText)
-                            .addTo(map);
-
-                        marker.setPopup(popup);
-                    });
-            }
-
-        </script>
+        <script type="text/javascript" src="http://localhost:8080/static/js/mapArtist.js"></script>
         {{range $key, $value := .Relations.Relation}}
         <script>addMarker("{{$key}}","{{$value}}")</script>
         {{end}}

@@ -23,6 +23,14 @@ span{
     white-space: nowrap;
 }
 
+#map {
+    width:800px;
+    height:500px;
+    text-align: center;
+    margin: 50px auto;
+    border-radius: 5px;
+}
+
 .name {
     font-family: "Comic Sans MS", serif;
     font-size: 40px;
