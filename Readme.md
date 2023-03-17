@@ -3,7 +3,7 @@
 
 [//]: # (TODO: finish me)
 ### Objectives
-    Groupie Trackers consists on receiving a given API and manipulate the data contained in it, in order to create a site, displaying the information.
+    The project Groupie Trackers consists on receiving a given API and manipulate the data contained in it, in order to create a site, displaying the information.
     It will be given an API, that consists in four parts:
     The first one, artists, containing information about some bands and artists like their name(s), image, in which year they began their activity, the date of their first album and the members.
     The second one, locations, consists in their last and/or upcoming concert locations.
@@ -19,6 +19,9 @@
 
     - Search-bar
     - Filters
+    - Map
+    - Gender
+    - Different languages (English, French, Spanich, German...)
     - Visualizations ( Schneiderman's 8 Golden Rules of Interface Design ) :
         - Strive for consistency
         - Enable frequent users to use shortcuts
@@ -39,6 +42,10 @@ git clone https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git
 - Launch the website with the command :
 ```bash
 cd go_files | go run .
+```
+- Or if you are already in the directory &nbsp; " go_files " &nbsp;:
+```bash
+go run .
 ```
 
 # Credit
