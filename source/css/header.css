@@ -93,7 +93,7 @@ input[type="submit"] {
 input[type="text"]{
     border: none;
     width: 100%;
-    height: 12.5vh;
+    height: 150px;
     margin: 0;
     background-color: #4b4d5b;
     background-image: linear-gradient(to bottom, #30323b, transparent);
@@ -147,12 +147,14 @@ label {
     margin-left: 5px;
 }
 
+/* TODO: center*/
 .filters {
     display: flex;
     justify-content: center;
-    height: 50px;
+    height: auto;
     background-color: rgb(29,29,56);
     text-align: center;
+    align-items: center;
     color: #ffff;
     font-family: "Comic Sans MS", serif;
     font-size: 30px;

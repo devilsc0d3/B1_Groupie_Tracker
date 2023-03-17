@@ -1,6 +1,7 @@
 # Order
 ***
 
+[//]: # (TODO: finish me)
 ### Objectives
     Groupie Trackers consists on receiving a given API and manipulate the data contained in it, in order to create a site, displaying the information.
     It will be given an API, that consists in four parts:
@@ -37,7 +38,7 @@ git clone https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git
 ```
 - Launch the website with the command :
 ```bash
-cd go_file | go run .
+cd go_files | go run .
 ```
 
 # Credit

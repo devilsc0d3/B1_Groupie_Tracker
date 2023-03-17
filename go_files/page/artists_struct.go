@@ -1,64 +1,21 @@
 package page
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/zmb3/spotify"
+	"golang.org/x/oauth2/clientcredentials"
+	"groupie-t/go_files/struct"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 )
 
-type Artists struct {
-	ID           int64    `json:"id"`
-	Image        string   `json:"image"`
-	Name         string   `json:"name"`
-	Members      []string `json:"members"`
-	CreationDate int64    `json:"creationDate"`
-	FirstAlbum   string   `json:"firstAlbum"`
-	Locations    Locations
-	ConcertDates Dates
-	Relations    Relation
-	Language     Language
-	Suggestion   []Artists
-}
-
-type Language struct {
-	En          []string
-	Fr          []string
-	Es          []string
-	Ge          []string
-	CurrentLang []string
-}
-
-type Base struct {
-	Nbr       int
-	Data      []Artists
-	Show      []Artists
-	Language  Language
-	DataGenre map[string][]Artists
-	ShowGenre map[string][]Artists
-}
-
-type Relation struct {
-	ID       int64               `json:"id"`
-	Relation map[string][]string `json:"datesLocations"`
-}
-
-type Locations struct {
-	ID        int64    `json:"id"`
-	Locations []string `json:"locations"`
-	Dates     string   `json:"dates"`
-}
-
-type Dates struct {
-	ID    int64    `json:"id"`
-	Dates []string `json:"dates"`
-}
-
-var bdd Base
-var dates Dates
-var rel Relation
+var bdd structure.Base
 
 func GetApi(url string, target interface{}) {
 	response, err := http.Get(url)
@@ -72,6 +29,8 @@ func GetApi(url string, target interface{}) {
 		}
 	}
 }
+
+var ArrayGender [][]string
 
 func Variable() {
 
@@ -93,7 +52,8 @@ func Variable() {
 		"Die von Ihnen gesuchte Seite kann nicht gefunden werden.", "Bitte gehen Sie zur MusicMinder+ Homepage, indem Sie auf die folgende Schaltfläche klicken"}
 
 	bdd.Language.CurrentLang = bdd.Language.En
-	Savetest()
+	ReadFile()
+	ReadFileList()
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Data)
 	GetApi("https://groupietrackers.herokuapp.com/api/artists", &bdd.Show)
 	for i := 0; i < len(bdd.Data); i++ {
@@ -104,31 +64,33 @@ func Variable() {
 
 	for i := 0; i < 52; i++ {
 		bdd.Data[i].Language = bdd.Language
+		bdd.Data[i].Gender = ArrayGender[i]
+
 	}
-
 	TriGenre(bdd.DataGenre)
-	//-----------------------------------
-
+	//-----------------------------------//
 	//for i := 0; i < 52; i++ {
 	//	Spotify(bdd.Data[i].Name, i)
 	//}
 	//write()
-
-	//-----------------
+	//-----------------------------------//
+	rand.Seed(time.Now().UnixNano())
+	for i := 0; i < 52; i++ {
+		listShuffle := generateRandomList()
+		for o := 0; o < len(listShuffle); o++ {
+			bdd.Data[i].Suggestion = append(bdd.Data[i].Suggestion, bdd.Data[listShuffle[o]])
+		}
+	}
 
 	for i := 0; i < len(bdd.Data); i++ {
-		bdd.Data[i].Suggestion = bdd.Data[0:10]
-
-		artist := bdd.Data[i]
-		http.HandleFunc("/"+strconv.FormatInt(bdd.Data[i].ID, 10), func(w http.ResponseWriter, r *http.Request) {
-			ArtistPage(w, r, artist)
-		})
+		artist := &bdd.Data[i]
+		http.HandleFunc("/"+strconv.FormatInt(artist.ID, 10), createHandlerFunction(artist))
 	}
 	http.HandleFunc("/research", SearchPage)
 }
 
-func TriGenre(array map[string][]Artists) {
-	temp := map[string][]Artists{}
+func TriGenre(array map[string][]structure.Artists) {
+	temp := map[string][]structure.Artists{}
 	for key, value := range array {
 		if len(value) > 4 {
 			temp[key] = value
@@ -137,20 +99,95 @@ func TriGenre(array map[string][]Artists) {
 	bdd.ShowGenre = temp
 }
 
-func write() {
-	b, _ := json.Marshal(groups)
-	save, _ := os.Create("save.txt")
+func write(file string) {
+	b, _ := json.Marshal(gender)
+	save, _ := os.Create(file)
 	_, err := save.Write(b)
 	if err != nil {
 		return
 	}
 }
 
-func Savetest() {
+func ReadFile() {
 	content, _ := os.ReadFile("../save.txt")
 	err1 := json.Unmarshal(content, &bdd.DataGenre)
 	if err1 != nil {
 		fmt.Print(err1, "error")
 		return
+	}
+}
+
+func ReadFileList() {
+	content, _ := os.ReadFile("SaveGender.txt")
+	err1 := json.Unmarshal(content, &ArrayGender)
+	if err1 != nil {
+		fmt.Print(err1, "error")
+		return
+	}
+}
+
+func generateRandomList() []int {
+	nums := make([]int, 30)
+	for i := 0; i < 30; i++ {
+		randomNum := rand.Intn(52)
+		for IsPresent(nums, randomNum) {
+			randomNum = rand.Intn(52)
+		}
+		nums[i] = randomNum
+	}
+
+	return nums
+}
+
+func IsPresent(nums []int, num int) bool {
+	for _, n := range nums {
+		if n == num {
+			return true
+		}
+	}
+	return false
+}
+
+var groups = map[string][]structure.Artists{}
+var gender [][]string
+
+func Spotify(group string, i int) {
+	// create a config client for authenticator
+	config := &clientcredentials.Config{
+		ClientID:     "317c8b50b7974d9ea372963d712069fd",
+		ClientSecret: "fbbb467fdfb6474f92719ab754b55fa4",
+		TokenURL:     spotify.TokenURL,
+	}
+	// get a client authenticator
+	token, err := config.Token(context.Background())
+	if err != nil {
+	}
+	client := spotify.Authenticator{}.NewClient(token)
+
+	// search artist on Spotify
+	results, err := client.Search(group, spotify.SearchTypeArtist)
+	if err != nil {
+		fmt.Print(err)
+	}
+
+	artist := results.Artists.Artists[0]
+
+	// get CATEGORIES
+	fullArtist, err := client.GetArtist(artist.ID)
+	if err != nil {
+		fmt.Print(err)
+	}
+
+	//gender = append(gender, fullArtist.Genres)
+
+	for _, category := range fullArtist.Genres {
+		groups[category] = append(groups[category], bdd.Data[i])
+	}
+
+}
+
+func createHandlerFunction(artist *structure.Artists) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		ArtistPage(w, r, *artist)
 	}
 }
