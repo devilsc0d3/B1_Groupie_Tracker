@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="http://localhost:8080/static/css/research.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/header.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/footer.css">
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
+        <meta charset="UTF-8">
+        <title>MM+</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="top">
+            <img src="http://localhost:8080/static/image/logo.png" class="title" alt="logo">
+
+            <a href="/" class="underlineEffect">
+                <div class="divHome">
+                    <img src="http://localhost:8080/static/image/home.png" class="imgHome" alt="home logo">
+                    <h1 class="h1Home">{{index .Language.CurrentLang 0}}</h1>
+                </div>
+            </a>
+
+            <a href="/research" class="underlineEffect">
+                <div class="divHome">
+                    <img class="imgHome" src="http://localhost:8080/static/image/research.png" alt="research logo">
+                    <h1 class="h1Search">{{index .Language.CurrentLang 1}}</h1>
+                </div>
+            </a>
+
+            <div class="divLanguage underlineEffect">
+                <img class="imgHome" src="http://localhost:8080/static/image/globe.png" alt="globe logo">
+                <h1 class="h1Search">{{index .Language.CurrentLang 2}}</h1>
+                <form method="post" class="menu">
+                        <select name="language">
+                            <option value="en">en</option>
+                            <option value="fr">fr</option>
+                            <option value="es">es</option>
+                            <option value="ge">ge</option>
+                        </select>
+                    <input type="submit" value="{{index .Language.CurrentLang 3}}" class="but">
+                </form>
+            </div>
+
+            </div>
+            <form method="post">
+                    <input type="text" name="search" placeholder="{{index .Language.CurrentLang 9}}" list="suggestions" maxlength="64" autofocus>
+                <datalist id="suggestions">
+                    {{range .Data}}
+                    <option value="{{.Name}}">{{.Name}} - {{index $.Language.CurrentLang 4}}</option>
+                    <option value="{{.FirstAlbum}}">{{.FirstAlbum}} - {{index $.Language.CurrentLang 20}}</option>
+                    <option value="{{.CreationDate}}">{{.CreationDate}} - {{index $.Language.CurrentLang 5}}</option>
+                    {{range .Members}}
+                    <option value="{{.}}">{{.}} - {{index $.Language.CurrentLang 14}}</option>
+                    {{end}}
+                    {{range .Locations.Locations}}
+                    <option value="{{.}}">{{.}} - {{index $.Language.CurrentLang 6}}</option>
+                    {{end}}
+                    {{range $key, $value := .Relations.Relation}}
+                    {{range $value}}  <option value="{{.}}">{{.}} - {{index $.Language.CurrentLang 7}}</option> {{end}}
+                    {{end}}
+
+                    {{end}}
+                </datalist>
+
+            <div class="filters">
+                <h2 class="wordFilters">{{index .Language.CurrentLang 5}} : </h2>
+                <input type="checkbox" value="on" name="creationDCheck">
+                <input type="range" min="1950" max="2023" id="creationD" name="range">
+                <span class="span" id="creationDValue"></span>
+                <h2 class="wordFilters">&nbsp;&nbsp;&nbsp;{{index .Language.CurrentLang 10}} : </h2>
+                <input type="checkbox" id="1" name="checkbox1" value="on">
+                <label for="1">1</label>
+                <input type="checkbox" id="2" name="checkbox2" value="on">
+                <label for="2">2</label>
+                <input type="checkbox" id="3" name="checkbox3" value="on">
+                <label for="3">3</label>
+                <input type="checkbox" id="4" name="checkbox4" value="on">
+                <label for="4">4</label>
+                <input type="checkbox" id="5" name="checkbox5" value="on">
+                <label for="5">5</label>
+                <input type="checkbox" id="6" name="checkbox6" value="on">
+                <label for="6">6</label>
+                <input type="checkbox" id="7" name="checkbox7" value="on">
+                <label for="7">7</label>
+                <input type="checkbox" id="8" name="checkbox8" value="on">
+                <label for="8">8&nbsp;</label>
+                <h2 class="wordFilters">&nbsp;&nbsp;{{index .Language.CurrentLang 11}} : </h2>
+                <input type="checkbox" value="on" name="firstACheck">
+                <input type="date" min="1963-06-26" max="2018-11-15" id="firstA" name="firstA">
+                <span class="span" id="firstAValue"></span>
+                <input type="submit" value="Submit" class="submit">
+            </div>
+            </form>
+        </header>
+
+        <main>
+            <section class="sectionImage">
+                {{if len .Show}}
+                    {{range .Show}}
+                        <a href="{{.ID}}">
+                            <div class="divImage">
+                                <img src="{{.Image}}" class="image" alt="Image group">
+                                <h1 class="h1Name">{{.Name}}</h1>
+                            </div>
+                        </a>
+                    {{end}}
+                {{else}}
+                    <h1 class="errSearch">{{index $.Language.CurrentLang 8}}</h1>
+                {{end}}
+            </section>
+        </main>
+
+        <footer>
+            <img src="http://localhost:8080/static/image/logo.png" class="titleBottom" alt="logo"> <br>
+            <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
+            <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
+            <p class="credit">Cenac Lucille - Fauré Léo</p>
+        </footer>
+        <script src="http://localhost:8080/static/js/research.js"></script>
+    </body>
+</html>

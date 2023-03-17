@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="http://localhost:8080/static/css/home.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/footer.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/slider.css">
+
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
+        <meta charset="UTF-8">
+        <title>MM+</title>
+    </head>
+
+    <body>
+        <div class="language">
+            <img class="glass" src="http://localhost:8080/static/image/globe.png" alt="globe logo">
+            <h1 class="h1Search">{{index .Language.CurrentLang 2}}</h1>
+            <form method="post" class="menu">
+                <label>
+                    <select name="language">
+                        <option value="en">en</option>
+                        <option value="fr">fr</option>
+                        <option value="es">es</option>
+                        <option value="ge">ge</option>
+                    </select>
+                </label>
+                <input type="submit" value="send" class="but">
+            </form>
+        </div>
+        <a href="/research">
+            <div class="divSearch">
+                <img class="glass" src="http://localhost:8080/static/image/research.png" alt="research logo">
+                <h1 class="h1Search">{{index .Language.CurrentLang 1}}</h1>
+            </div>
+        </a>
+
+        <section class="sectionTitle">
+            <div class="center divTitle">
+<!--                <h1 class="title">MusicMinder+</h1>-->
+                <img src="http://localhost:8080/static/image/logo.png" class="title" alt="logo">
+            </div>
+        </section>
+
+        <img class="barrette" src="http://localhost:8080/static/image/gradient.png" alt="blue gradient">
+
+        {{range $key, $value := .ShowGenre}}
+        <section class="product">
+            <h1 class="subtitle"><i>{{$key}}</i></h1>
+            <button class="pre-btn"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
+
+            <div class="product-container">
+                {{range $value}}
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{{.ID}}">
+                        <img src="{{.Image}}" class="image" alt="" >
+                            <h1 class="h1Name">{{.Name}}</h1>
+                        </a>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        </section>
+        {{end}}
+        <script src="http://localhost:8080/static/js/slider.js"></script>
+
+        <footer>
+            <img src="http://localhost:8080/static/image/logo.png" class="titleBottom" alt="logo"> <br>
+            <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
+            <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
+            <p class="credit">Cenac Lucille - Fauré Léo</p>
+        </footer>
+    </body>
+</html>

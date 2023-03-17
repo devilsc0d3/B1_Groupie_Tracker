@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    background-color: #1d1d38;
+}
+
+
+main {
+    flex-grow: 1;
+    min-height: 50vh;
+}
+footer {
+
+}
+
+img {
+    margin: 50px 0 0 0;
+    width: 800px;
+}
+
+h1 {
+    font-family: "Comic Sans MS",serif;
+    font-size: 110px;
+    color: #ffff;
+    margin: 0;
+}
+
+h2 {
+    font-family: Disney, sans-serif;
+    font-size: 80px;
+    font-weight: 500;
+    color: #ffff;
+}
+
+p {
+    font-size: 20px;
+    color: #ffff;
+}
+
+a {
+    text-decoration: none;
+    color: #ffff;
+}
+
+.center {
+    text-align: center;
+}
+
+::-webkit-scrollbar{
+    width: 11px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffff;
+    border-radius: 75px;
+}
+
+@font-face {
+    font-family: 'Disney';
+    src: url("http://localhost:8080/static/font/waltograph42.otf") format("truetype");
+}

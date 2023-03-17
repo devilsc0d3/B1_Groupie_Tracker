@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="http://localhost:8080/static/css/artist.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/header.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/slider.css">
+        <link rel="stylesheet" href="http://localhost:8080/static/css/footer.css">
+
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
+
+
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
+        <meta charset="UTF-8">
+        <title>Artist</title>
+    </head>
+
+<body>
+    <header class="top">
+        <img src="http://localhost:8080/static/image/logo.png" class="title" alt="logo">
+        <a href="/" class="underlineEffect">
+            <div class="divHome">
+                <img src="http://localhost:8080/static/image/home.png" class="imgHome" alt="home icon">
+                <h1 class="h1Home">{{index .Language.CurrentLang 0}}</h1>
+            </div>
+        </a>
+
+        <a href="/research" class="underlineEffect">
+            <div class="divHome">
+                <img class="imgHome" src="http://localhost:8080/static/image/research.png" alt="research icon">
+                <h1 class="h1Search">{{index .Language.CurrentLang 1}}</h1>
+            </div>
+        </a>
+
+        <div class="divHome underlineEffect">
+            <img class="imgHome" src="http://localhost:8080/static/image/globe.png" alt="globe icon">
+            <h1 class="h1Search">{{index .Language.CurrentLang 2}}</h1>
+            <form method="post" class="menu">
+                <select name="language">
+                        <option value="fr">fr</option>
+                        <option value="es">en</option>
+                        <option value="es">es</option>
+                        <option value="ge">ge</option>
+                    </select>
+                <input type="submit" value="send" class="but">
+            </form>
+        </div>
+    </header>
+
+    <section class="sectionIn">
+        <div class="divImage">
+            <img src="{{.Image}}" class="img" alt="logo group">
+        </div>
+        <div class="divText">
+            <h1 class="name">{{.Name}}</h1>
+            <p>★ {{index .Language.CurrentLang 12}} {{.CreationDate}} ★</p>
+            <p>♪ {{index .Language.CurrentLang 13}} {{.FirstAlbum}} ♪</p>
+            <p>♫ {{index .Language.CurrentLang 21}} : {{range .Gender}}{{.}}{{end}} ♫</p>
+            <div class="divBehavior">
+                <a href="#members">
+                    <img src="./static/image/group.png" class="scrollBehavior">
+                </a>
+                <a href="#concert">
+                    <img src="./static/image/live.png" class="scrollBehavior">
+                </a>
+                <a href="#maps">
+                    <img src="./static/image/emplacement.png" class="scrollBehavior">
+                </a>
+                <a href="#suggestion">
+                    <img src="./static/image/musical.png" class="scrollBehavior">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="divProposition lineEffect">
+        <img src="./static/image/group.png" class="icon">
+        <h1 class="proposition" id="members">{{index .Language.CurrentLang 14}} :</h1>
+        </div>
+        <p>
+            {{range $i, $member := .Members}}
+                {{- if ne $i 0 -}}, {{end}}
+                {{- $member -}}
+            {{end}}
+        </p>
+        <div class="divProposition lineEffect">
+        <img src="./static/image/live.png" class="icon">
+        <h1 class="proposition" id="concert">{{index .Language.CurrentLang 15}} :</h1>
+        </div>
+            {{range $location, $date := .Relations.Relation}}
+                <p> {{$location}}  : {{range $date}} <span>{{.}}</span> {{end}} </p>
+                <br>
+            {{end}}
+        <div class="divProposition lineEffect">
+        <img src="./static/image/emplacement.png" class="icon">
+        <h1 class="proposition" id="maps">{{index .Language.CurrentLang 16}} :</h1>
+        </div>
+        <div id="map"></div>
+
+        <script type="text/javascript" src="http://localhost:8080/static/js/mapArtist.js"></script>
+        {{range $location, $date := .Relations.Relation}}
+        <script>addMarker("{{$location}}","{{$date}}")</script>
+        {{end}}
+
+        <div class="divProposition lineEffect">
+        <img src="./static/image/musical.png" class="icon">
+        <h1 class="proposition" id="suggestion">{{index .Language.CurrentLang 17}} :</h1>
+        </div>
+
+        <section class="product">
+            <button class="pre-btn2"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
+            <button class="nxt-btn2"><img src="http://localhost:8080/static/image/arrow.png" alt=""></button>
+
+            <div class="product-container">
+                {{range .Suggestion}}
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{{.ID}}">
+                            <img src="{{.Image}}" class="image" alt="">
+                        </a>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+            <script src="http://localhost:8080/static/js/slider.js"></script>
+
+        </section>
+    </section>
+    <footer>
+        <img src="http://localhost:8080/static/image/logo.png" class="titleBottom" alt="logo"> <br>
+        <a href="https://ytrack.learn.ynov.com/git/clucille/groupie-tracker.git" class="credit">Repository Gitea</a><br>
+        <a href="https://www.flaticon.com/fr/" class="credit">Flaticon</a>
+        <p class="credit">Cenac Lucille - Fauré Léo</p>
+    </footer>
+</body>
+</html>

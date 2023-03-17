@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="http://localhost:8080/static/css/404.css">
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/static/image/m.png">
+        <meta charset="UTF-8">
+        <title>404</title>
+    </head>
+    <body>
+        <div class="center">
+            <header>
+                <img src="http://localhost:8080/static/image/err{{.Nbr}}.png" alt="disney pictures">
+
+            </header>
+            <main>
+                <h1>404 ERROR</h1>
+                <a href="https://artsandculture.google.com/experiment/blob-opera/AAHWrq360NcGbw?cp=e30.">
+                    <h2>{{index .Language.CurrentLang 18}}</h2>
+                </a>
+            </main>
+
+            <footer>
+                <p>{{index .Language.CurrentLang 19}}</p>
+
+                <a href="/">
+                    MUSIC-MINDER+
+                </a>
+            </footer>
+        </div>
+    </body>
+</html>
